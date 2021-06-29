@@ -25,18 +25,18 @@ export class FeedCreatePostComponent implements OnInit {
 
   randomMovieQuote = "";
   randomMovieQuotes = [
-    "Go ahead, make my day.",
-    "The stuff that dreams are made of.",
-    "Made it, Ma! Top of the world!",
-    "I'll be back.",
-    "Open the pod bay doors, HAL.",
-    "Who's on first.",
-    "What's on second.",
-    "I feel the need - the need for speed!",
-    "I'm king of the world!",
-    "If you build it, they will come.",
-    "Roads? Where we're going we don't need roads",
-    "To infinity and beyond!",
+    "Утром деньги, вечером стулья.",
+    "Наши люди в булочную на такси не ездят.",
+    "Кражи не будет. Всё уже украдено до нас.",
+    "Водочки нам принеси, мы домой летим!",
+    "Я требую продолжения банкета!",
+    "Лёд тронулся , господа присяжные заседатели",
+    "А вас, Штирлиц, я попрошу остаться.",
+    "Пилите, Шура, пилите, они золотые.",
+    "Абдулла! Таможня даёт добро!",
+    "Я мзду не беру. Мне за державу обидно",
+    "Быстро только кошки родятся",
+    "А че это вы тут делаете, а?",
   ];
 
   submittingPost = false;
