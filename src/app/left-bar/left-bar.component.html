@@ -58,13 +58,13 @@
       <div *ngIf="globalVars.loggedInUser && globalVars.loggedInUser.ProfileEntryResponse?.Username; else elseBlock">
         <left-bar-button
           [link]="AppRoutingModule.profilePath(globalVars.loggedInUser.ProfileEntryResponse.Username)"
-          [buttonLabel]="'Profile'"
+          [buttonLabel]="'Профиль'"
         ></left-bar-button>
       </div>
       <ng-template #elseBlock>
         <left-bar-button
           [link]="'/' + this.globalVars.RouteNames.UPDATE_PROFILE"
-          [buttonLabel]="'Update Profile'"
+          [buttonLabel]="'Обновить Профиль'"
         ></left-bar-button>
       </ng-template>
 

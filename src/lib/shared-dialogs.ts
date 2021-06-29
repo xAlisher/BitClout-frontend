@@ -39,7 +39,7 @@ export class SharedDialogs {
         confirmButton: "btn btn-light",
         cancelButton: "btn btn-light no",
       },
-      confirmButtonText: "Complete Your Profile",
+      confirmButtonText: "Заполнить свой Профиль",
       cancelButtonText: "Nevermind",
       reverseButtons: true,
     }).then((res: any) => {
@@ -61,7 +61,7 @@ export class SharedDialogs {
         confirmButton: "btn btn-light",
         cancelButton: "btn btn-light no",
       },
-      confirmButtonText: "Complete Your Profile",
+      confirmButtonText: "Заполнить свой Профиль",
       cancelButtonText: "Nevermind",
       reverseButtons: true,
     }).then((res: any) => {
