@@ -27,7 +27,7 @@ export class RightBarCreatorsComponent implements OnInit {
   static RightBarTabKey = "RightBarTab";
 
   static GAINERS: RightBarTabOption = {
-    name: "Лучший дневной прирост",
+    name: "Топовый прирост",
     width: 175,
     poweredBy: { name: "BitClout Pulse", link: "https://bitcloutpulse.com" },
   };
