@@ -15,7 +15,7 @@
     <div class="global__top-bar__height"></div>
     <!-- Description, Logged Out -->
     <div *ngIf="!globalVars.loggedInUser" class="fc-default fs-15px mt-30px pr-15px ml-15px pb-30px">
-      $BitClout is a cryptocurrency like Bitcoin, only it powers the first decentralized social network.
+      $БитКлаут это криптовалюта как Биткоин, БитКлаут поддерживает первую децентралищированную социальную сеть.
     </div>
 
     <!-- Spacer -->
@@ -27,13 +27,13 @@
         class="fs-18px fc-default font-weight-bold ml-15px buy-bitclout__box-label-adjustment"
         style="background-color: white"
       >
-        How do I get $BitClout?
+        Как получить $БитКлаут?
       </div>
       <div>
         <div class="d-flex w-100 mt-5px pl-15px fs-15px pb-15px pr-30px">
           <div style="min-width: 120px">
-            <a (click)="globalVars.launchSignupFlow()">Create an anonymous account</a>
-            to buy $BitClout in under a minute.
+            <a (click)="globalVars.launchSignupFlow()">Создайте анонимный аккаунт</a>
+            чтобы купить $БитКлаут меньше чем за минуту.
           </div>
         </div>
       </div>
@@ -47,48 +47,48 @@
         class="fs-18px mb-10px fc-default font-weight-bold ml-15px buy-bitclout__box-label-adjustment"
         style="background-color: white"
       >
-        What is $BitClout useful for?
+        Для чего подходит $БитКлаут?
       </div>
       <div>
         <div class="d-flex w-100 pl-15px pt-15px pb-15px fs-15px buy-bitclout__amount-background">
           <div style="min-width: 120px">
-            You can use it to buy and sell
+            Вы можете его использовать для покупки и продажи
             <a
               [routerLink]="['/' + globalVars.RouteNames.CREATORS]"
               [routerLinkActive]="['selected']"
               [routerLinkActiveOptions]="{ exact: true }"
               queryParamsHandling="merge"
             >
-              creator coins
+              авторских монет
             </a>
           </div>
         </div>
         <div class="d-flex w-100 justify-content-between pl-15px pr-15px pb-15px mt-15px fs-15px fc-default">
-          You can use it to send messages to people
+          Вы можете его использовать для отправки сообщений
         </div>
         <div
           class="d-flex w-100 justify-content-between buy-bitclout__amount-background pl-15px pr-15px pt-15px pb-15px mb-15px fs-15px fc-default"
         >
           <div>
-            You can use it to
+            Вы можете его использовать
             <a
               [routerLink]="['/' + globalVars.RouteNames.BROWSE]"
               [routerLinkActive]="['selected']"
               [routerLinkActiveOptions]="{ exact: true }"
               queryParamsHandling="merge"
             >
-              submit posts
+              для отправки
             </a>
-            of your own
+            собственных постов
           </div>
         </div>
         <div class="d-flex w-100 justify-content-between pl-15px pr-15px pb-15px fs-15px fc-default">
-          You can buy it anonymously with Bitcoin in under a minute
+          ВЫ можете купить его за Биткоин меньше чем за минуту
         </div>
         <div
           class="d-flex w-100 justify-content-between buy-bitclout__amount-background pl-15px pr-15px pt-15px pb-15px fs-15px fc-default"
         >
-          <div>It's blockchain's "iPhone moment."</div>
+          <div>БитКлаут для блокчейна, как Айфон для телефонов"</div>
         </div>
       </div>
     </div>
