@@ -13,8 +13,8 @@ import PullToRefresh from "pulltorefreshjs";
   styleUrls: ["./feed.component.sass"],
 })
 export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
-  static GLOBAL_TAB = "Global";
-  static FOLLOWING_TAB = "Following";
+  static GLOBAL_TAB = "Мир";
+  static FOLLOWING_TAB = "Подписки";
   static MARKET_TAB = "Market";
   static TABS = [FeedComponent.GLOBAL_TAB, FeedComponent.FOLLOWING_TAB];
   static NUM_TO_FETCH = 50;
