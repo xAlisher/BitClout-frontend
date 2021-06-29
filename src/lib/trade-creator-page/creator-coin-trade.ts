@@ -3,13 +3,13 @@ import { BackendApiService, ProfileEntryResponse } from "../../app/backend-api.s
 import { FormControl, Validators } from "@angular/forms";
 
 export class CreatorCoinTrade {
-  static BUY_VERB = "Buy";
-  static SELL_VERB = "Sell";
-  static TRANSFER_VERB = "Transfer";
+  static BUY_VERB = "Ккпить";
+  static SELL_VERB = "Продать";
+  static TRANSFER_VERB = "Переслать";
 
-  static BITCLOUT_CURRENCY_STRING = "BitClout";
+  static BITCLOUT_CURRENCY_STRING = "БитКлаут>";
   static USD_CURRENCY_STRING = "USD";
-  static CREATOR_COIN_CURRENCY_STRING = "Creator coin";
+  static CREATOR_COIN_CURRENCY_STRING = "Авторская монета";
 
   isBuyingCreatorCoin: boolean;
 
