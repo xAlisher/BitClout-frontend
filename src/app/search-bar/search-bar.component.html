@@ -30,7 +30,7 @@
 
   <!-- Results Dropdown -->
   <div class="w-100 search-bar__results-dropdown" *ngIf="searchText != '' && (creators.length > 0 || loading)">
-    <div *ngIf="loading" class="d-flex justify-content-center fs-15px fc-muted p-5px">Loading...</div>
+    <div *ngIf="loading" class="d-flex justify-content-center fs-15px fc-muted p-5px">Загрузка...</div>
     <div *ngIf="!loading && creators.length > 0" class="fs-15px">
       <div
         *ngFor="let creator of creators; let ii = index"

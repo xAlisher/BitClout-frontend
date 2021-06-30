@@ -73,8 +73,8 @@
       class="w-100 py-15px d-flex align-items-center justify-content-center cursor-pointer creator-leaderboard__load-more"
       (click)="loadMorePosts()"
     >
-      <div *ngIf="!activeTabReadyForDisplay()" class="fs-15px">Load More</div>
-      <div *ngIf="activeTabReadyForDisplay()" class="fs-15px">Loading...</div>
+      <div *ngIf="!activeTabReadyForDisplay()" class="fs-15px">Показать больше</div>
+      <div *ngIf="activeTabReadyForDisplay()" class="fs-15px">Загрузка...</div>
     </div>
   </div>
 
@@ -83,7 +83,7 @@
     class="d-flex flex-column align-items-center justify-content-center fc-muted fs-15px p-15px text-center"
     style="height: 400px"
   >
-    <div>No posts yet</div>
+    <div>Еще нет постов</div>
 
     <div class="mt-10px">
       <a
@@ -92,9 +92,9 @@
         [queryParams]="{ feedTab: FeedComponent.GLOBAL_TAB }"
         queryParamsHandling="merge"
       >
-        View the global feed
+        Посмотрите мировую ленту
       </a>
-      to find more people to follow
+      чтобы найти на кого подписаться
     </div>
   </div>
   <simple-center-loader *ngIf="showLoadingSpinner()"></simple-center-loader>
