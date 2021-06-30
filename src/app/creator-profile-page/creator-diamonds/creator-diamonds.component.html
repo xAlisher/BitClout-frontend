@@ -1,6 +1,6 @@
 <div class="w-100 d-flex flex-column justify-content-start px-15px fs-15px">
   <div class="container border-bottom border-color-grey font-weight-bold fs-20px pl-0px py-15px">
-    Diamonds
+    Алмазы
     <select
       [ngModel]="activeTab"
       (ngModelChange)="onChange($event)"
@@ -12,10 +12,10 @@
         class="font-weight-bold fs-20px"
         style="background-color: none"
       >
-        received
+        получено
       </option>
       <option [value]="CreatorDiamondsComponent.GIVEN" class="font-weight-bold fs-20px" style="background-color: none">
-        given
+        отослано
       </option>
     </select>
     by @{{ profile.Username }}
@@ -23,16 +23,16 @@
   <div>
     <div class="container fs-15px flex-grow-1">
       <div class="row no-gutters border-bottom border-color-grey fc-muted">
-        <div class="col-lg-4 col-5 d-flex align-items-center py-15px mb-0">Username</div>
-        <div class="col-lg-5 col-4 text-left d-flex align-items-center py-15px mb-0">Most Diamonds</div>
-        <div class="col-3 text-center d-flex align-items-center py-15px mb-0">Total Diamonds</div>
+        <div class="col-lg-4 col-5 d-flex align-items-center py-15px mb-0">Имя профиля</div>
+        <div class="col-lg-5 col-4 text-left d-flex align-items-center py-15px mb-0">Больше всего Алмазов</div>
+        <div class="col-3 text-center d-flex align-items-center py-15px mb-0">Всего Алмазов</div>
       </div>
       <div *ngIf="!isLoading && diamondSummaryList.length == 0" class="row no-gutters pt-10px">
         <div class="d-flex align-items-center" style="margin-bottom: 0">
           <span>
             {{ getNoDiamondsMessage() }}
             <a [routerLink]="['/' + globalVars.RouteNames.USER_PREFIX, profile.Username]" *ngIf="!showDiamondsGiven">
-              &nbsp;Be the first!
+              &nbsp;Будь первым!
             </a>
           </span>
         </div>
@@ -78,7 +78,7 @@
       </div>
 
       <div *ngIf="!isLoading && diamondSummaryList.length != 0" class="row no-gutters font-weight-bold">
-        <div class="col-4 py-15px mb-0">Total</div>
+        <div class="col-4 py-15px mb-0">Всего</div>
         <div class="col-4 py-15px mb-0"><!--Blank--></div>
         <div class="col-4 text-center py-15px mb-0">
           {{ totalDiamonds }} ≈ {{ globalVars.abbreviateNumber(valueOfAllDiamonds(), 2, true) }}
