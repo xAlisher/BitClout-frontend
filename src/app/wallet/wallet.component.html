@@ -16,18 +16,18 @@
         <div
           class="d-flex align-items-center justify-content-between fs-18px font-weight-bold p-15px holdings__divider border-bottom border-color-grey"
         >
-          <div>$BitClout</div>
+          <div>$БитКлаут</div>
           <div class="fs-15px" style="margin-top: 2px">
             <a
               *ngIf="globalVars.loggedInUser"
               href="{{ 'https://explorer.bitclout.com/?public-key=' + globalVars.loggedInUser.PublicKeyBase58Check }}"
               class="fc-blue"
             >
-              Transactions
+              Транзакции
             </a>
             <span class="px-5px">·</span>
             <a [routerLink]="'/' + globalVars.RouteNames.SEND_BITCLOUT" queryParamsHandling="merge" class="fc-blue">
-              Send
+              Послать
             </a>
           </div>
         </div>
@@ -36,7 +36,7 @@
         <!-- Override .container's max-width property with max-width: inherit-->
         <div class="container fs-15px p-15px border-bottom border-color-grey" style="max-width: inherit">
           <div class="row pt-5px">
-            <div class="col-3 font-weight-bold">Balance</div>
+            <div class="col-3 font-weight-bold">Баланс</div>
             <div class="col-9">
               <div>
                 {{ globalVars.nanosToBitClout(globalVars.loggedInUser.BalanceNanos, 9) }}
@@ -69,10 +69,10 @@
         <div
           class="d-flex align-items-center justify-content-between fs-18px p-15px holdings__divider border-bottom border-color-grey"
         >
-          <div class="font-weight-bold">Creator Coins</div>
+          <div class="font-weight-bold">Авторские монеты</div>
           <div class="fs-14px">
             <span class="font-weight-bold">≈ {{ globalVars.nanosToUSD(totalValue(), 2) }}</span>
-            USD Value
+            Стоимость в USD
           </div>
         </div>
 
@@ -83,10 +83,10 @@
           <div
             class="row no-gutters d-flex align-items-center fc-muted border-bottom border-color-grey pl-15px py-15px"
           >
-            <div class="col mb-0">Name</div>
+            <div class="col mb-0">Имя</div>
             <div class="col-2 d-lg-block d-none mb-0" style="text-align: end">Price</div>
             <div class="col-4 mb-0" style="text-align: end">
-              USD Value
+              Стоимость в USD
               <i
                 class="fas fa-info-circle text-greyC fs-15px global__tooltip-icon"
                 matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
