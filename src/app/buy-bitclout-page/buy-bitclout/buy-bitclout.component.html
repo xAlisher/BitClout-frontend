@@ -15,10 +15,9 @@
       <div class="global__mobile-scrollable-section" *ngIf="!waitingOnTxnConfirmation">
         <!-- Description -->
         <div class="fc-muted fs-15px mt-30px ml-15px">
-          $BitClout is a
-          <span style="color: black">cryptocurrency</span>
-          like Bitcoin, only it powers the first
-          <span style="color: black">decentralized social network</span>
+           БитКлаут это криптовалюта как Биткоин,
+          Битклаут поддерживает первую
+          <span style="color: black">децентрализированную социальную сеть</span>
           .
         </div>
 
@@ -32,7 +31,7 @@
               class="fs-15px buy-bitclout__box-label-adjustment pl-5px pr-5px ml-10px"
               style="background-color: white"
             >
-              Step One
+              Шаг первый
 
               <i
                 (click)="tooltip1.toggle()"
@@ -45,10 +44,10 @@
 
             <div class="px-15px pt-5px">
               <div class="fs-18px font-weight-bold">
-                Send Bitcoin to this
+                Послать Биткоин на этот
 
                 <span>
-                  address
+                  адрес
                   <i
                     (click)="tooltip2.toggle()"
                     class="fas fa-info-circle text-greyC fs-15px global__tooltip-icon"
@@ -61,7 +60,7 @@
 
               <div class="fs-18px mt-1 mb-1">
                 <span>
-                  Minimum deposit is currently
+                  Минимальный депозит
                   <b>
                     {{ ((buyBitCloutFields.bitcoinTransactionFeeRateSatoshisPerKB * 0.3) / 1e8).toFixed(4) }} Bitcoin
                   </b>
@@ -89,14 +88,14 @@
                     class="btn btn-outline-primary w-100"
                     style="border-radius: 3px"
                   >
-                    Copy
+                    Копировать
                   </div>
                 </div>
               </div>
 
               <div class="row pl-15px pt-15px">
                 <div class="col-12 fs-15px pl-0px mb-0" style="border-radius: 3px">
-                  <span class="font-weight-bold">Amount deposited</span>
+                  <span class="font-weight-bold">Обьём депозита</span>
                   <span
                     (click)="tooltip.toggle()"
                     class="text-grey8A fs-15px global__tooltip-icon"
@@ -104,7 +103,7 @@
                     [matTooltip]="withdrawBitcoinTooltip()"
                     #tooltip="matTooltip"
                   >
-                    &middot; Withdraw
+                    &middot; Обналичить
                   </span>
                 </div>
               </div>
@@ -138,14 +137,14 @@
                     class="btn btn-outline-secondary w-100 fs-15px p-5px"
                     style="border-radius: 3px; height: 35px"
                   >
-                    Refresh
+                    Обновить
                   </div>
                 </div>
               </div>
 
               <div class="row pl-15px pt-5px">
                 <div class="col-12 fs-15px pl-0px fc-muted" style="border-radius: 3px">
-                  Click "refresh" to check your bitcoin balance.
+                  Нажмите обновить чтобы узнать ваш текущий баланс Биткоинов
 
                   <i
                     (click)="tooltip3.toggle()"
@@ -168,7 +167,7 @@
               class="fs-15px pl-5px pr-5px ml-10px buy-bitclout__box-label-adjustment"
               style="background-color: white"
             >
-              Step Two
+              Шаг два
             </div>
 
             <!-- BitClout to buy input-->
@@ -176,7 +175,7 @@
               <div class="d-flex w-100 fs-18px font-weight-bold">
                 <div style="min-width: 120px">Купить $БитКлаут за БитКоин</div>
               </div>
-              <div class="fs-15px mt-20px font-weight-bold">$BitClout to buy</div>
+              <div class="fs-15px mt-20px font-weight-bold">Сколько $БитКлаутов?</div>
               <div class="pt-5px d-flex align-items-center justify-content-start">
                 <input
                   class="form-control w-50 fs-15px lh-15px"
@@ -186,15 +185,15 @@
                   (ngModelChange)="_updateBitCloutToBuy($event)"
                 />
                 <div class="ml-2 w-50 fs-15px">
-                  $BitClout &middot;
+                  $БитКлаут &middot;
                   <a class="text-grey7" (click)="_clickMaxBitClout()">
-                    <u>Max</u>
+                    <u>Максимум</u>
                   </a>
                 </div>
               </div>
 
               <!-- Bitcoin to exchange input-->
-              <div class="fs-15px mt-15px font-weight-bold">Bitcoin to swap</div>
+              <div class="fs-15px mt-15px font-weight-bold">Биткоины на обмен</div>
               <div class="pt-5px d-flex align-items-center justify-content-start">
                 <input
                   class="form-control w-50 fs-15px"
@@ -205,12 +204,12 @@
                   [(ngModel)]="buyBitCloutFields.bitcoinToExchange"
                   (ngModelChange)="_updateBitcoinToExchange($event)"
                 />
-                <div class="ml-2 w-50 fs-15px">Bitcoin</div>
+                <div class="ml-2 w-50 fs-15px">Биткоин</div>
               </div>
 
               <!-- Bitcoin network fee-->
               <div class="fs-15px mt-15px text-grey7">
-                Bitcoin network fee
+                Комиссия сети Биткоин
 
                 <i
                   (click)="tooltip4.toggle()"
@@ -240,7 +239,7 @@
 
               <!-- Total bitcion to swap -->
               <div class="fs-15px mt-15px text-grey7">
-                Total Bitcoin to swap
+                Всего Биткоинов на обмен
                 <div class="mt-1 w-100 fs-15px">
                   <div *ngIf="!buyBitCloutFields.error">
                     {{
