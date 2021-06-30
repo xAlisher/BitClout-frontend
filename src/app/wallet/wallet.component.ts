@@ -16,8 +16,8 @@ export class WalletComponent implements OnInit {
   usersYouReceived: BalanceEntryResponse[] = [];
   usersYouPurchased: BalanceEntryResponse[] = [];
 
-  static coinsPurchasedTab: string = "Coins Purchased";
-  static coinsReceivedTab: string = "Coins Received";
+  static coinsPurchasedTab: string = "Купленные монеты";
+  static coinsReceivedTab: string = "Полученные монеты";
   tabs = [WalletComponent.coinsPurchasedTab, WalletComponent.coinsReceivedTab];
   activeTab: string = WalletComponent.coinsPurchasedTab;
 
@@ -97,8 +97,8 @@ export class WalletComponent implements OnInit {
 
   emptyHodlerListMessage(): string {
     return this.showTransferredCoins
-      ? "You haven't received coins from any creators you don't already hold."
-      : "You haven't purchased any creator coins yet.";
+      ? "Вы еще не получили авторских монет, которыми еще не владели."
+      : "Вы еще не купили авторских монет.";
   }
 
   _handleTabClick(tab: string) {
