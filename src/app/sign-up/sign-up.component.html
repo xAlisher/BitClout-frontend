@@ -7,10 +7,10 @@
     <div class="d-flex align-items-center">
       <top-bar-mobile-navigation-control class="mr-15px d-lg-none d-inline-block"></top-bar-mobile-navigation-control>
 
-      <span class="font-weight-bold">Sign up&nbsp;</span>
+      <span class="font-weight-bold">Зарегистрироваться&nbsp;</span>
       <div *ngIf="stepNum == 1">
         &middot;
-        <a class="font-weight-bold" (click)="globalVars.launchLoginFlow()">Log in</a>
+        <a class="font-weight-bold" (click)="globalVars.launchLoginFlow()">Войти</a>
       </div>
     </div>
   </div>
@@ -31,15 +31,14 @@
     <div *ngIf="stepNum == 4">
       <div *ngIf="showPhoneNumberVerifiedContent" class="border-color-grey border-bottom py-15px">
         <div class="p-15px br-12px background-color-grey fs-15px">
-          Your phone number was verified. We sent you a small amount of BitClout, which is enough to post and follow
-          people.
+          Ваш номер телефона был проверен. Мы отправили вам небольшое количество БитКлаут. Его хватит чтобы делать посты и подписываться.
         </div>
       </div>
 
-      <div class="pt-15px fs-15px fc-muted">STEP 4 of 4</div>
-      <div class="fs-24px font-weight-bold pt-15px">Do you want notifications?</div>
-      <div class="fs-18px pt-15px">Get notified when someone buys your coin.</div>
-      <div class="fs-15px pt-30px">E-mail</div>
+      <div class="pt-15px fs-15px fc-muted">Шаг 4 из 4</div>
+      <div class="fs-24px font-weight-bold pt-15px">Хотите получать нотификации?</div>
+      <div class="fs-18px pt-15px">Получайте нотификацции, когда кто-то покупает вашу монету.</div>
+      <div class="fs-15px pt-30px">Ваш имэйл</div>
       <div class="form-group pt-10px">
         <input
           type="email"
@@ -48,31 +47,31 @@
           [(ngModel)]="emailAddress"
           (ngModelChange)="_validateEmail($event)"
         />
-        <div class="fc-red fs-15px mt-10px" *ngIf="invalidEmailEntered">Please enter a valid email address.</div>
+        <div class="fc-red fs-15px mt-10px" *ngIf="invalidEmailEntered">Введите работающий имэйл.</div>
       </div>
       <div class="d-flex justify-content-end">
         <button (click)="_notificationsStepSkip()" class="btn btn-outline-primary font-weight-bold fs-15px">
-          Skip
+          Пропустить
         </button>
         <button
           *ngIf="!invalidEmailEntered && !storingEmailAndPhone"
           (click)="_notificationsStepNext()"
           class="btn btn-primary font-weight-bold fs-15px ml-10px"
         >
-          Next
+          Дальше
         </button>
         <button
           *ngIf="storingEmailAndPhone"
           (click)="_notificationsStepNext()"
           class="btn btn-primary font-weight-bold fs-15px ml-10px"
         >
-          Loading...
+          Загрузка...
         </button>
         <button
           *ngIf="invalidEmailEntered && !storingEmailAndPhone"
           class="btn btn-primary font-weight-bold fs-15px ml-10px"
         >
-          Next
+          Дальше
         </button>
       </div>
 
@@ -88,10 +87,10 @@
     <div *ngIf="stepNum == 5">
       <div class="fs-24px font-weight-bold pt-15px">
         <i class=""></i>
-        Are you ready?
+       Вы готовы?
       </div>
-      <div class="fs-18px pt-15px">An account was created with a private key based on your seed phrase.</div>
-      <div class="fs-15px pt-30px mb-10px">What's Next?</div>
+      <div class="fs-18px pt-15px">Аккаунт был создан с публичным ключем, основанным на вашей сид-фразе.</div>
+      <div class="fs-15px pt-30px mb-10px">Что дальше?</div>
 
       <button
         [routerLink]="'/' + this.globalVars.RouteNames.BUY_BITCLOUT"
@@ -117,7 +116,7 @@
         queryParamsHandling="merge"
         class="btn btn-outline-primary font-weight-bold fs-15px mt-5px mr-15px mb-5px"
       >
-        Browse
+        Осмотреться
       </button>
     </div>
   </div>

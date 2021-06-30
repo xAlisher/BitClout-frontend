@@ -4,18 +4,18 @@
 >
   <top-bar-mobile-navigation-control class="mr-15px d-lg-none d-inline-block"></top-bar-mobile-navigation-control>
 
-  Send $BitClout
+  Послать $Битклаут
 </div>
 
 <!-- Explainer -->
 <div
   class="d-flex align-items-center fs-15px fc-muted p-15px border-bottom border-color-grey background-color-light-grey"
 >
-  Sending $BitClout is easy. Just enter a public key below and the protocol will handle the rest.
+Послать $Битклаут легко. Введите публичный ключ ниже.
 </div>
 
 <div class="fs-15px font-weight-bold mt-15px px-15px">
-  Public key or username to pay:
+  Публичный ключ или имя пользователя:
   <input
     class="form-control w-100 fs-15px lh-15px mt-5px"
     placeholder="Enter a public key or username."
@@ -23,7 +23,7 @@
   />
 </div>
 
-<div class="fs-15px font-weight-bold mt-15px px-15px">Amount of $BitClout to send:</div>
+<div class="fs-15px font-weight-bold mt-15px px-15px">Сколько $БитКлаутов послать:</div>
 <div class="d-flex align-items-center px-15px mt-5px">
   <input type="number" class="form-control w-100 fs-15px lh-15px" placeholder="0" [(ngModel)]="transferAmount" />
   <button
@@ -32,7 +32,7 @@
     style="line-height: 15px; border-radius: 3px"
     (click)="_clickMaxBitClout()"
   >
-    Max
+    Максимум
   </button>
   <button
     *ngIf="loadingMax"
@@ -40,11 +40,11 @@
     style="line-height: 15px; border-radius: 3px"
     disabled
   >
-    Loading...
+    Загрузка...
   </button>
 </div>
 
-<div class="fs-15px font-weight-bold mt-15px px-15px">Network Fee:</div>
+<div class="fs-15px font-weight-bold mt-15px px-15px">Комиссия:</div>
 <div
   class="d-flex align-items-center fs-15px lh-15px pl-15px mt-5px ml-15px mr-15px border border-color-grey background-color-light-grey"
   style="height: 40px; border-radius: 3px"
@@ -72,7 +72,7 @@
   style="line-height: 15px; border-radius: 3px"
   (click)="_clickSendBitClout()"
 >
-  Send Bitclout
+  Послать БитКлаут
 </button>
 
 <button
@@ -81,7 +81,7 @@
   style="line-height: 15px; border-radius: 3px"
   disabled
 >
-  Working...
+  Обрабатывается...
 </button>
 
 <!--Spacer (for mobile)-->
