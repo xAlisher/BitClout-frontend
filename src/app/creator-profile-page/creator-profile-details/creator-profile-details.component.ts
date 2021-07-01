@@ -16,16 +16,16 @@ export class CreatorProfileDetailsComponent {
   @ViewChild(CreatorProfileTopCardComponent, { static: false }) childTopCardComponent;
 
   static TABS = {
-    posts: "Posts",
+    posts: "Посты",
     // Leaving this one in so old links will direct to the Coin Purchasers tab.
     "creator-coin": "Creator Coin",
     "coin-purchasers": "Creator Coin",
-    diamonds: "Diamonds",
+    diamonds: "Алмазы",
   };
   static TABS_LOOKUP = {
-    Posts: "posts",
+    Posts: "Посты",
     "Creator Coin": "creator-coin",
-    Diamonds: "diamonds",
+    Diamonds: "Алмазы",
   };
   appData: GlobalVarsService;
   userName: string;
