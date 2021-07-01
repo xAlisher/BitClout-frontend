@@ -43,7 +43,7 @@ export class RightBarCreatorsComponent implements OnInit {
   };
 
   static ALL_TIME: RightBarTabOption = {
-    name: "Top Creators All Time",
+    name: "Лучшие авторы за все время",
     width: 210,
     poweredBy: null,
   };
