@@ -72,8 +72,8 @@ export class CreatorProfileDetailsComponent {
   unblock() {
     SwalHelper.fire({
       target: this.globalVars.getTargetComponentSelector(),
-      title: "Unblock user",
-      html: `This user will appear in your feed and on your threads again`,
+      title: "Разблокировать",
+      html: `Этот пользователь снова появится в вашей ленте и в ваших комЭтот пользователь снова появится в вашей ленте и в ваших темахентариях`,
       showCancelButton: true,
       customClass: {
         confirmButton: "btn btn-light",
@@ -117,8 +117,8 @@ export class CreatorProfileDetailsComponent {
   blockUser() {
     SwalHelper.fire({
       target: this.globalVars.getTargetComponentSelector(),
-      title: "Block user?",
-      html: `This will hide all comments from this user on your posts as well as hide them from your view on other threads.`,
+      title: "Заблокировать?",
+      html: `Это скроет все комментарии этого пользователя к вашим сообщениям, а также скроет их из вашего поля зрения в других темах.`,
       showCancelButton: true,
       customClass: {
         confirmButton: "btn btn-light",
