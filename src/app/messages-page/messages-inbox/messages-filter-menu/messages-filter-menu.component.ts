@@ -67,7 +67,7 @@ export class MessagesFilterMenuComponent implements OnInit {
     } else if (this.messageSortAlgorithm === "followers") {
       return "По подпискам";
     } else if (this.messageSortAlgorithm === "holders") {
-      return "Держатели вашей монеты";
+      return "По вашим монетам";
     } else {
       return "По цене монеты";
     }
