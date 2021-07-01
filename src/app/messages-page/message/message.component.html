@@ -16,7 +16,7 @@
         ? globalVars.messageMeta.decryptedMessgesMap[
             globalVars.loggedInUser.PublicKeyBase58Check + "" + message.TstampNanos
           ].DecryptedText
-        : "&#60;Message is not decryptable on this device&#62;"
+        : "&#60;Сообщение не может быть расшифровано на этом устройстве&#62;"
     }}
   </div>
   <div
@@ -35,7 +35,7 @@
 <div *ngIf="message.IsSender" class="d-flex justify-content-end align-items-end mt-5px">
   <div *ngIf="nextMessage ? message.IsSender != nextMessage.IsSender : true" class="fs-12px fc-muted">
     <span *ngIf="message.TstampNanos">{{ globalVars.convertTstampToDateOrTime(message.TstampNanos) }}</span>
-    <span *ngIf="!message.TstampNanos">Sending...</span>
+    <span *ngIf="!message.TstampNanos">Отсылаем...</span>
   </div>
   <div class="message__avatar-placeholder ml-15px"></div>
 </div>
