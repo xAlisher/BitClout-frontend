@@ -23,7 +23,7 @@
     [routerLink]="['/' + globalVars.RouteNames.POSTS, post.PostHashHex]"
     queryParamsHandling="merge"
   >
-    This post was removed by the author.
+    Пост был удален автором.
   </a>
 </div>
 
@@ -37,8 +37,7 @@
     [routerLink]="['/' + globalVars.RouteNames.USER_PREFIX, post.ProfileEntryResponse.Username]"
     queryParamsHandling="merge"
   >
-    This is a post from {{ post.ProfileEntryResponse.Username }} who you have blocked. Click here to visit their profile
-    to unblock them.
+    Этот пост от {{ post.ProfileEntryResponse.Username }}, который был вами заблокирован. Нажмите здесь, чтобы попасть на профиль и разблокировать.
   </a>
 </div>
 
@@ -64,7 +63,7 @@
         queryParamsHandling="merge"
         [routerLink]="['/' + globalVars.RouteNames.USER_PREFIX, post.ParentPosts[0].ProfileEntryResponse.Username]"
       >
-        replying to {{ post.ParentPosts[0].ProfileEntryResponse.Username }}
+        ответ на {{ post.ParentPosts[0].ProfileEntryResponse.Username }}
       </a>
     </div>
     <div
@@ -114,7 +113,7 @@
         [routerLink]="['/' + globalVars.RouteNames.POSTS, postContent.PostHashHex]"
         queryParamsHandling="merge"
       >
-        The original post was removed by its author.
+        Оригинальный пост был удален автором.
       </a>
     </div>
 
@@ -204,7 +203,7 @@
         </div>
 
         <div *ngIf="showReplyingToContent" class="fs-13px text-muted pt-1 pb-2">
-          replying to
+          В ответ на
           <a
             [routerLink]="['/' + this.globalVars.RouteNames.USER_PREFIX, parentPost.ProfileEntryResponse.Username]"
             queryParamsHandling="merge"
@@ -296,14 +295,14 @@
               class="py-5px px-10px admin__add-to-feed-button"
             >
               <i class="fas fa-folder-plus"></i>
-              Add to global feed
+              Добавить в мировую ленту
             </div>
             <div
               *ngIf="!postContent.InGlobalFeed && addingPostToGlobalFeed"
               class="py-5px px-10px admin__add-to-feed-button"
             >
               <i class="fas fa-folder-plus"></i>
-              Adding...
+              Добавляем...
             </div>
             <div
               *ngIf="postContent.InGlobalFeed && !addingPostToGlobalFeed"
@@ -311,14 +310,14 @@
               class="py-5px px-10px admin__remove-from-feed-button"
             >
               <i class="fas fa-check"></i>
-              On global feed
+              В глобальной ленте
             </div>
             <div
               *ngIf="postContent.InGlobalFeed && addingPostToGlobalFeed"
               class="py-5px px-10px admin__remove-from-feed-button"
             >
               <i class="fas fa-check"></i>
-              Removing...
+              Удаляем...
             </div>
 
             <div>
@@ -327,7 +326,7 @@
                 [routerLink]="['/' + globalVars.RouteNames.POSTS, postContent.PostHashHex]"
                 queryParamsHandling="merge"
               >
-                View
+                Посмотреть
               </a>
             </div>
 
@@ -354,19 +353,19 @@
         <div class="d-flex justify-content-between">
           <span (click)="openRecloutsModal($event)" class="interaction-detail">
             <b>{{ globalVars.abbreviateNumber(post.RecloutCount) }}</b>
-            Reclouts&nbsp;
+            Реклауты&nbsp;
           </span>
           <span (click)="openQuoteRecloutsModal($event)" class="interaction-detail">
             <b>{{ globalVars.abbreviateNumber(post.QuoteRecloutCount) }}</b>
-            Quote Reclouts&nbsp;
+            Реклауты с цитатой&nbsp;
           </span>
           <span (click)="openLikesModal($event)" class="interaction-detail">
             <b>{{ globalVars.abbreviateNumber(post.LikeCount) }}</b>
-            Likes
+            Лайки
           </span>
           <span (click)="openDiamondsModal($event)" class="interaction-detail">
             <b>{{ globalVars.abbreviateNumber(post.DiamondCount) }}</b>
-            Diamonds
+            Алмазы
           </span>
         </div>
       </div>
@@ -376,21 +375,21 @@
       >
         <div class="col-6 mb-0 interaction-detail" (click)="openRecloutsModal($event)">
           <b>{{ globalVars.abbreviateNumber(postContent.RecloutCount) }}</b>
-          Reclouts&nbsp;
+          Реклауты&nbsp;
         </div>
         <div class="col-6 mb-0 interaction-detail" (click)="openQuoteRecloutsModal($event)">
           <b>{{ globalVars.abbreviateNumber(postContent.QuoteRecloutCount) }}</b>
-          Quote Reclouts&nbsp;
+          Реклауты с цитатой&nbsp;
         </div>
       </div>
       <div class="row no-gutters d-lg-none py-10px fs-15px border-bottom border-color-light-grey cursor-pointer">
         <div (click)="openLikesModal($event)" class="col-6 mb-0 interaction-detail">
           <b>{{ globalVars.abbreviateNumber(postContent.LikeCount) }}</b>
-          Likes
+          Лайки
         </div>
         <div (click)="openDiamondsModal($event)" class="col-6 mb-0 interaction-detail">
           <b>{{ globalVars.abbreviateNumber(postContent.DiamondCount) }}</b>
-          Diamonds
+          Алмазы
         </div>
       </div>
     </div>

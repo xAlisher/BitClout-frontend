@@ -1,10 +1,10 @@
 <div class="w-100">
   <div class="px-15px">
-    <div class="fs-18px font-weight-bold mb-10px">Enter an amount in USD to convert to BitClout</div>
-    <p class="mb-5px">You can purchase up to ${{ maxUsdAmount }} of BitClout per week using USD.</p>
+    <div class="fs-18px font-weight-bold mb-10px">Сколько USD вы хотите обменять на $CLOUT</div>
+    <p class="mb-5px">Вы можете покупать до ${{ maxUsdAmount }} $CLOUT в неделю за USD.</p>
     <p class="mb-10px">
-      For larger purchases,
-      <a [routerLink]="['', 'buy-bitclout']" [queryParams]="{ btc: true }">buy with Bitcoin.</a>
+      Для больших покупок,
+      <a [routerLink]="['', 'buy-bitclout']" [queryParams]="{ btc: true }">используйте Биткоин.</a>
     </p>
     <div class="fs-18px py-15px d-flex flex-column">
       <div class="d-flex flex-row">
@@ -35,7 +35,7 @@
       <div class="d-flex flex-row">
         <div class="input-group" style="width: 48%">
           <div class="input-group-prepend">
-            <span class="input-group-text">Currency</span>
+            <span class="input-group-text">Валюта</span>
           </div>
           <select
             [ngModel]="selectedFiatCurrency"
@@ -51,7 +51,7 @@
         <div class="d-flex px-15px" style="align-items: center; width: 30px"></div>
         <div class="input-group" style="width: 48%">
           <div class="input-group-prepend">
-            <span class="input-group-text">Country</span>
+            <span class="input-group-text">Страна</span>
           </div>
           <select
             [ngModel]="selectedCountry"
@@ -72,7 +72,7 @@
       (click)="onBuyClicked()"
       [ngClass]="{ disabled: quotationError }"
     >
-      Buy BitClout
+      Купить $CLOUT
     </button>
   </div>
 </div>
