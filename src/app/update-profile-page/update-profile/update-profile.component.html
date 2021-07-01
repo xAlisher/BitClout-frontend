@@ -123,7 +123,7 @@
               ></i>
             </div>
             <div *ngIf="this.globalVars.loggedInUser.UsersWhoHODLYouCount === 0" class="fc-muted font-italic fs-13px pt-5px">
-              * You must purchase your own coin before lowering your founder reward.
+              * Вам надо купить своих монет до снижения процента вознаграждения основателя.
             </div>
             <div
               *ngIf="profileUpdateErrors.founderRewardError"
@@ -150,7 +150,7 @@
               [ngClass]="{ 'btn-loading': updateProfileBeingCalled }"
               class="btn btn-primary btn-lg font-weight-bold fs-15px mt-5px"
             >
-              Обновить Профиль
+              Обновить профиль
             </a>
             <i *ngIf="profileUpdated" class="far fa-check-circle fa-lg fc-blue ml-10px"></i>
           </div>

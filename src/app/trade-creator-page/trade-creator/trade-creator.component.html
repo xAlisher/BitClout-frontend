@@ -33,20 +33,20 @@
           >
             <i class="fas fa-check-circle fa-md"></i>
           </span>
-          coin
+          монет
         </p>
 
         <span *ngIf="screenToShow == this.TRADE_CREATOR_PREVIEW_SCREEN">
-          Confirm Coin
+          Подтвердить монету
           {{ creatorCoinTrade.tradeVerbString() }}
         </span>
 
         <span *ngIf="screenToShow == this.TRADE_CREATOR_COMPLETE_SCREEN">
           <i class="far fa-check-circle text-primary"></i>
           <span class="ml-10px text-primary">
-            Success!
+            Успех!
             {{ creatorCoinTrade.tradeVerbString() }}
-            Complete
+            Готово
           </span>
         </span>
       </div>
