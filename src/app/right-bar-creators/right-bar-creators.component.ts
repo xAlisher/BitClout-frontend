@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { GlobalVarsService } from "../global-vars.service";
 import { BackendApiService } from "../backend-api.service";
 
-class RightBarTabOption {
+export class RightBarTabOption {
   name: string;
   width: number;
   poweredBy: {
@@ -42,20 +42,28 @@ export class RightBarCreatorsComponent implements OnInit {
     poweredBy: { name: "BitHunt", link: "https://bithunt.com" },
   };
 
-  chartMap = {
+  static ALL_TIME: RightBarTabOption = {
+    name: "Top Creators All Time",
+    width: 210,
+    poweredBy: null,
+  };
+
+  static chartMap = {
     [RightBarCreatorsComponent.GAINERS.name]: RightBarCreatorsComponent.GAINERS,
     [RightBarCreatorsComponent.DIAMONDS.name]: RightBarCreatorsComponent.DIAMONDS,
     [RightBarCreatorsComponent.COMMUNITY.name]: RightBarCreatorsComponent.COMMUNITY,
+    [RightBarCreatorsComponent.ALL_TIME.name]: RightBarCreatorsComponent.ALL_TIME,
   };
 
   ngOnInit() {
     const defaultTab = this.backendApi.GetStorage(RightBarCreatorsComponent.RightBarTabKey);
-    this.activeTab = defaultTab in this.chartMap ? defaultTab : RightBarCreatorsComponent.GAINERS.name;
+    this.activeTab =
+      defaultTab in RightBarCreatorsComponent.chartMap ? defaultTab : RightBarCreatorsComponent.ALL_TIME.name;
     this.selectTab(true);
   }
 
   selectTab(skipStorage: boolean = false) {
-    const rightTabOption = this.chartMap[this.activeTab];
+    const rightTabOption = RightBarCreatorsComponent.chartMap[this.activeTab];
     this.activeRightTabOption = rightTabOption;
     this.selectedOptionWidth = rightTabOption.width + "px";
     if (!skipStorage) {

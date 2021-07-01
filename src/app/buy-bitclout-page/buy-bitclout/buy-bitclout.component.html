@@ -20,10 +20,18 @@
           <span style="color: black">децентрализированную социальную сеть</span>.
         </div>
 
-        <!-- Spacer -->
-        <div style="height: 60px"></div>
-
-        <div>
+        <div style="height: 60px" *ngIf="!globalVars.showBuyWithUSD"></div>
+        <div
+          class="pb-15px"
+          *ngIf="globalVars.showBuyWithUSD"
+          [ngClass]="{ 'mb-10px': activeTab === BuyBitcloutComponent.BUY_WITH_BTC }"
+        >
+          <tab-selector [tabs]="buyTabs" [activeTab]="activeTab" (tabClick)="_handleTabClick($event)"></tab-selector>
+        </div>
+        <div *ngIf="activeTab === BuyBitcloutComponent.BUY_WITH_USD && globalVars.showBuyWithUSD">
+          <buy-bitclout-usd></buy-bitclout-usd>
+        </div>
+        <div *ngIf="activeTab === BuyBitcloutComponent.BUY_WITH_BTC || !globalVars.showBuyWithUSD">
           <!-- Step One Box -->
           <div class="w-100 border-top border-color-grey">
             <div
@@ -189,6 +197,9 @@
                     <u>Максимум</u>
                   </a>
                 </div>
+              </div>
+              <div class="fs-12px mt-5px text-grey7" *ngIf="globalVars.BuyBitCloutFeeBasisPoints">
+                <i>Includes {{ globalVars.BuyBitCloutFeeBasisPoints / 100 }}% slippage</i>
               </div>
 
               <!-- Bitcoin to exchange input-->

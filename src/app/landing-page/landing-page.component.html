@@ -25,9 +25,9 @@
 <div class="w-100 border-bottom">
   <div class="container-lg landing__header">
     <div class="row">
-      <div class="col landing__logo">BitClout</div>
+      <div class="col landing__logo clout">BitClout</div>
       <div class="col d-flex justify-content-end align-items-center">
-        <div class="input-group w-auto d-none d-sm-flex">
+        <div class="input-group w-auto d-none d-sm-flex" style="margin-left: 25px">
           <div class="input-group-prepend">
             <label class="landing__nav-buy input-group-text">
               {{ globalVars.bitcloutToUSDExchangeRateToDisplay }} USD
@@ -44,6 +44,8 @@
           </div>
         </div>
         <a class="landing__nav-link" href="https://docs.bitclout.com/" target="_blank">Манифест</a>
+        <a class="landing__nav-link" href="https://docs.bitclout.com/the-vision" target="_blank">Виденье</a>
+        <a class="landing__nav-link" href="https://docs.bitclout.com/zhong-wen" target="_blank">中文</a>
         <a class="landing__nav-link" (click)="globalVars.launchLoginFlow()">Войти</a>
         <a class="landing__nav-link" (click)="globalVars.launchSignupFlow()">Зарегистрироваться</a>
       </div>
@@ -61,7 +63,8 @@
       </h1>
       <div class="slide-up-2">
         <a class="btn btn-primary landing__sign-up" (click)="globalVars.launchSignupFlow()">Зарегистрироваться</a>
-        <a class="landing__log-in d-none d-md-block" (click)="globalVars.launchLoginFlow()">Войти</a>
+        <a class="landing__log-in d-none d-sm-block" (click)="globalVars.launchLoginFlow()">Войти</a>
+        <a class="landing__log-in d-block d-sm-none mt-3" (click)="globalVars.launchLoginFlow()">Войти</a>
       </div>
     </div>
   </div>
@@ -77,6 +80,9 @@
         <br />
         <br />
         <a href="https://docs.bitclout.com/" target="_blank">Узнать больше</a>
+        &nbsp;
+        &nbsp;
+        <a href="https://docs.bitclout.com/zhong-wen" target="_blank">中文</a>
       </p>
       <div class="row d-flex justify-content-center">
         <div class="col-sm-10 col-xs-12 mb-0 landing__example">
@@ -152,10 +158,13 @@
         <b>БитКлаут это не компания.</b>
         Это блокчейн с открытым исходным кодом как Биткоин.
         <br class="d-none d-md-block" />
-        Ты можешь владеть его частью купив БитКлаут 
+        Ты можешь владеть его частью купив БитКлаут
         <br />
         <br />
-        <a href="https://docs.bitclout.com/" target="_blank">Узнать больше</a>
+        <a href="https://docs.bitclout.com/the-vision" target="_blank">Узнать больше</a>
+        &nbsp;
+        &nbsp;
+        <a href="https://docs.bitclout.com/zhong-wen" target="_blank">中文</a>
       </p>
       <div class="row d-flex justify-content-center">
         <div class="col-sm-10 col-xs-12 mb-0 landing__example">
@@ -238,7 +247,9 @@
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col mb-0 text-center">
-        <p class="text-grey9 fs-12px">Потому что мы заслуживаем быть услышанными.</p>
+        <p class="text-grey9 fs-20px">Потому что мы заслуживаем быть услышанными.</p>
+        <br>
+        <a href="mailto:node.admin+contact@protonmail.com" class="fs-12px">Связь с администратором</a>
       </div>
     </div>
   </div>

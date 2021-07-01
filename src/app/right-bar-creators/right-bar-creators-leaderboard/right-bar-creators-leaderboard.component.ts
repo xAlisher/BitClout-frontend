@@ -13,38 +13,14 @@ import { BithuntService } from "../../../lib/services/bithunt/bithunt-service";
   styleUrls: ["./right-bar-creators-leaderboard.component.scss"],
 })
 export class RightBarCreatorsLeaderboardComponent implements OnInit {
+  static MAX_PROFILE_ENTRIES = 10;
   @Input() activeTab: string;
 
   RightBarCreatorsComponent = RightBarCreatorsComponent;
 
-  constructor(
-    public globalVars: GlobalVarsService,
-    private route: ActivatedRoute,
-    private _router: Router,
-    private backendApi: BackendApiService,
-    private httpClient: HttpClient
-  ) {}
+  constructor(public globalVars: GlobalVarsService, private route: ActivatedRoute, private _router: Router) {}
 
   ngOnInit() {
-    if (this.globalVars.rightBarLeaderboard.length > 0) {
-      return;
-    }
-
-    const pulseService = new PulseService(this.httpClient, this.backendApi, this.globalVars);
-
-    if (this.globalVars.topGainerLeaderboard.length === 0) {
-      pulseService.getBitCloutLockedLeaderboard().subscribe((res) => (this.globalVars.topGainerLeaderboard = res));
-    }
-    if (this.globalVars.topDiamondedLeaderboard.length === 0) {
-      pulseService.getDiamondsReceivedLeaderboard().subscribe((res) => (this.globalVars.topDiamondedLeaderboard = res));
-    }
-
-    const bithuntService = new BithuntService(this.httpClient, this.backendApi, this.globalVars);
-    if (this.globalVars.topCommunityProjectsLeaderboard.length === 0) {
-      bithuntService.getCommunityProjectsLeaderboard().subscribe((res) => {
-        this.globalVars.allCommunityProjectsLeaderboard = res;
-        this.globalVars.topCommunityProjectsLeaderboard = this.globalVars.allCommunityProjectsLeaderboard.slice(0, 10);
-      });
-    }
+    this.globalVars.updateLeaderboard();
   }
 }

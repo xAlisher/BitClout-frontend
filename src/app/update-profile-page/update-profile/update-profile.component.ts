@@ -3,7 +3,9 @@ import { GlobalVarsService } from "../../global-vars.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BackendApiService } from "../../backend-api.service";
 import { SwalHelper } from "../../../lib/helpers/swal-helper";
-import { RouteNames } from "../../app-routing.module";
+import { AppRoutingModule, RouteNames } from "../../app-routing.module";
+import { Title } from "@angular/platform-browser";
+import Swal from "sweetalert2";
 
 export type ProfileUpdates = {
   usernameUpdate: string;
@@ -48,11 +50,13 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
     public globalVars: GlobalVarsService,
     private route: ActivatedRoute,
     private backendApi: BackendApiService,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) {}
 
   ngOnInit() {
     this._updateFormBasedOnLoggedInUser();
+    this.titleService.setTitle("Update Profile - BitClout");
   }
 
   // This is used to handle any changes to the loggedInUser elegantly.
@@ -87,9 +91,19 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
 
   _updateFormBasedOnLoggedInUser() {
     if (this.globalVars.loggedInUser) {
-      this.usernameInput = this.globalVars.loggedInUser.ProfileEntryResponse?.Username || "";
-      this.descriptionInput = this.globalVars.loggedInUser.ProfileEntryResponse?.Description || "";
-      this.profilePicInput = this.globalVars.loggedInUser.ProfileEntryResponse?.ProfilePic || "";
+      const profileEntryResponse = this.globalVars.loggedInUser.ProfileEntryResponse;
+      this.usernameInput = profileEntryResponse?.Username || "";
+      this.descriptionInput = profileEntryResponse?.Description || "";
+      this.backendApi
+        .GetSingleProfilePicture(
+          this.globalVars.localNode,
+          profileEntryResponse?.PublicKeyBase58Check,
+          this.globalVars.profileUpdateTimestamp ? `?${this.globalVars.profileUpdateTimestamp}` : ""
+        )
+        .subscribe((res) => {
+          this._readImageFileToProfilePicInput(res);
+        });
+
       // If they don't have CreatorBasisPoints set, use the default.
       if (this.globalVars.loggedInUser.ProfileEntryResponse?.CoinEntry?.CreatorBasisPoints != null) {
         this.founderRewardInput = this.globalVars.loggedInUser.ProfileEntryResponse.CoinEntry.CreatorBasisPoints / 100;
@@ -171,8 +185,8 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
     this.usernameInput = this.usernameInput.trim();
 
     const hasErrors = this._setProfileErrors();
-    this.globalVars.logEvent("profile : update : error", this.profileUpdateErrors);
     if (hasErrors) {
+      this.globalVars.logEvent("profile : update : has-errors", this.profileUpdateErrors);
       return;
     }
 
@@ -180,6 +194,7 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
     this._setProfileUpdates();
     this._callBackendUpdateProfile().subscribe(
       (res) => {
+        this.globalVars.profileUpdateTimestamp = Date.now();
         this.globalVars.logEvent("profile : update");
         // This updates things like the username that shows up in the dropdown.
         this.globalVars.updateEverything(res.TxnHashHex, this._updateProfileSuccess, this._updateProfileFailure, this);
@@ -190,6 +205,7 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
         this.globalVars.logEvent("profile : update : error", { parsedError, lowBalance });
         this.updateProfileBeingCalled = false;
         SwalHelper.fire({
+          target: this.globalVars.getTargetComponentSelector(),
           icon: "error",
           title: `An Error Occurred`,
           html: parsedError,
@@ -199,7 +215,7 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
             confirmButton: "btn btn-light",
             cancelButton: "btn btn-light no",
           },
-          confirmButtonText: lowBalance ? "Buy $Bitclout" : null,
+          confirmButtonText: lowBalance ? "Buy $CLOUT" : null,
           cancelButtonText: lowBalance ? "Later" : null,
           showCancelButton: lowBalance,
         }).then((res) => {
@@ -212,8 +228,28 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
   }
 
   _updateProfileSuccess(comp: UpdateProfileComponent) {
+    comp.globalVars.celebrate();
     comp.updateProfileBeingCalled = false;
     comp.profileUpdated = true;
+    if (comp.globalVars.loggedInUser.UsersWhoHODLYouCount === 0) {
+      SwalHelper.fire({
+        target: comp.globalVars.getTargetComponentSelector(),
+        icon: "success",
+        title: "Buy your creator coin",
+        showConfirmButton: true,
+        focusConfirm: true,
+        customClass: {
+          confirmButton: "btn btn-light",
+        },
+        confirmButtonText: "Buy Your Coin",
+      }).then((res) => {
+        if (res.isConfirmed) {
+          comp.router.navigate([
+            AppRoutingModule.buyCreatorPath(comp.globalVars.loggedInUser.ProfileEntryResponse.Username),
+          ]);
+        }
+      });
+    }
   }
 
   _updateProfileFailure(comp: UpdateProfileComponent) {
@@ -231,17 +267,16 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
       this.globalVars._alertError("Please upload an image that is smaller than 5MB.");
       return;
     }
-    var reader = new FileReader();
-    reader.onload = (event: any) => {
-      let base64Image = btoa(event.target.result);
-      // image/png
-      let fileType = fileToUpload.type;
-      let url = `data:${fileType};base64,${base64Image}`;
-      this.profilePicInput = url;
+    this._readImageFileToProfilePicInput(fileToUpload);
+  }
 
-      return;
+  _readImageFileToProfilePicInput(file: Blob | File) {
+    const reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = (event: any) => {
+      const base64Image = btoa(event.target.result);
+      this.profilePicInput = `data:${file.type};base64,${base64Image}`;
     };
-    reader.readAsBinaryString(fileToUpload);
   }
 
   _resetImage() {

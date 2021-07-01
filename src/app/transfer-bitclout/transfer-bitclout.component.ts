@@ -1,8 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { BackendApiService } from "../backend-api.service";
+import { BackendApiService, ProfileEntryResponse } from "../backend-api.service";
 import { GlobalVarsService } from "../global-vars.service";
 import { sprintf } from "sprintf-js";
 import { SwalHelper } from "../../lib/helpers/swal-helper";
+import { Title } from "@angular/platform-browser";
+import { RouteNames } from "../app-routing.module";
+import { ActivatedRoute } from "@angular/router";
 
 class Messages {
   static INCORRECT_PASSWORD = `The password you entered was incorrect.`;
@@ -12,9 +15,9 @@ class Messages {
   static SEND_BITCLOUT_MIN = `You must send a non-zero amount of BitClout`;
   static INVALID_PUBLIC_KEY = `The public key you entered is invalid`;
   static CONFIRM_TRANSFER_TO_PUBKEY =
-    "Send %s $BitClout with a fee of %s BitClout for a total of %s BitClout to public key %s";
+    "Send %s $CLOUT with a fee of %s BitClout for a total of %s BitClout to public key %s";
   static CONFIRM_TRANSFER_TO_USERNAME =
-    "Send %s $BitClout with a fee of %s BitClout for a total of %s BitClout to username %s";
+    "Send %s $CLOUT with a fee of %s BitClout for a total of %s BitClout to username %s";
 }
 
 @Component({
@@ -25,7 +28,9 @@ class Messages {
 export class TransferBitcloutComponent implements OnInit {
   globalVars: GlobalVarsService;
   transferBitCloutError = "";
+  startingSearchText = "";
   payToPublicKey = "";
+  payToCreator: ProfileEntryResponse;
   transferAmount = 0;
   networkFee = 0;
   feeRateBitCloutPerKB: string;
@@ -33,12 +38,29 @@ export class TransferBitcloutComponent implements OnInit {
   loadingMax = false;
   sendingBitClout = false;
 
-  constructor(private backendApi: BackendApiService, private globalVarsService: GlobalVarsService) {
+  sendBitCloutQRCode: string;
+
+  constructor(
+    private backendApi: BackendApiService,
+    private globalVarsService: GlobalVarsService,
+    private titleService: Title,
+    private route: ActivatedRoute
+  ) {
     this.globalVars = globalVarsService;
+    this.route.queryParams.subscribe((queryParams) => {
+      if (queryParams.public_key) {
+        this.startingSearchText = queryParams.public_key;
+      }
+    });
   }
 
   ngOnInit() {
     this.feeRateBitCloutPerKB = (this.globalVars.defaultFeeRateNanosPerKB / 1e9).toFixed(9);
+    this.titleService.setTitle("Send $CLOUT - BitClout");
+    this.sendBitCloutQRCode = `${this.backendApi._makeRequestURL(
+      location.host,
+      "/" + RouteNames.SEND_BITCLOUT
+    )}?public_key=${this.globalVars.loggedInUser.PublicKeyBase58Check}`;
   }
 
   _clickMaxBitClout() {
@@ -79,7 +101,7 @@ export class TransferBitcloutComponent implements OnInit {
     }
 
     if (this.payToPublicKey == null || this.payToPublicKey === "") {
-      this.globalVars._alertError("A valid pay-to public key or username must be set before you can send $BitClout");
+      this.globalVars._alertError("A valid pay-to public key or username must be set before you can send $CLOUT");
       return;
     }
 
@@ -118,6 +140,7 @@ export class TransferBitcloutComponent implements OnInit {
         }
 
         SwalHelper.fire({
+          target: this.globalVars.getTargetComponentSelector(),
           title: "Are you ready?",
           html: sprintf(
             isUsername ? Messages.CONFIRM_TRANSFER_TO_USERNAME : Messages.CONFIRM_TRANSFER_TO_PUBKEY,
@@ -289,5 +312,10 @@ export class TransferBitcloutComponent implements OnInit {
     // If we get here we have no idea what went wrong so just alert the
     // errorString.
     return JSON.stringify(err);
+  }
+
+  _handleCreatorSelectedInSearch(creator: ProfileEntryResponse) {
+    this.payToCreator = creator;
+    this.payToPublicKey = creator?.Username || creator?.PublicKeyBase58Check || "";
   }
 }
