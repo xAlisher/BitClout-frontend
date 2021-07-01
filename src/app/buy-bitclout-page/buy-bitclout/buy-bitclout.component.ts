@@ -10,14 +10,14 @@ import { IdentityService } from "../../identity.service";
 import { WyreService } from "../../../lib/services/wyre/wyre";
 
 class Messages {
-  static INCORRECT_PASSWORD = `The password you entered was incorrect.`;
-  static INSUFFICIENT_BALANCE = `Your balance is insufficient to process the transaction.`;
-  static CONNECTION_PROBLEM = `We had a problem processing your transaction. Please wait a few minutes and try again.`;
-  static UNKOWN_PROBLEM = `There was a weird problem with the transaction. Debug output: %s`;
+  static INCORRECT_PASSWORD = `Введенный вами пароль был неправильным.`;
+  static INSUFFICIENT_BALANCE = `Ваш баланс недостаточен для проведения транзакции.`;
+  static CONNECTION_PROBLEM = `У нас возникли проблемы с обработкой вашей транзакции. Пожалуйста, подождите несколько минут и повторите попытку.`;
+  static UNKOWN_PROBLEM = `Возникла странная проблема с транзакцией. Отладочный вывод: %s`;
 
-  static CONFIRM_BUY_bitclout = `Are you ready to exchange %s Bitcoin with a fee of %s Bitcoin for %s BitClout?`;
-  static ZERO_bitclout_ERROR = `You must purchase a non-zero amount BitClout`;
-  static NEGATIVE_bitclout_ERROR = `You must purchase a non-negative amount of BitClout`;
+  static CONFIRM_BUY_bitclout = `Вы готовы обменять %s Bitcoin с комиссией в %s Bitcoin на %s BitClout?`;
+  static ZERO_bitclout_ERROR = `Вы должны приобрести ненулевую сумму $CLOUT`;
+  static NEGATIVE_bitclout_ERROR = `Вы должны приобрести неотрицательное количество $CLOUT`;
 }
 
 @Component({
@@ -38,8 +38,8 @@ export class BuyBitcloutComponent implements OnInit {
 
   BuyBitcloutComponent = BuyBitcloutComponent;
 
-  static BUY_WITH_USD = "Buy with USD";
-  static BUY_WITH_BTC = "Buy with Bitcoin";
+  static BUY_WITH_USD = "Купить за USD";
+  static BUY_WITH_BTC = "Купить за Bitcoin";
 
   buyTabs = [BuyBitcloutComponent.BUY_WITH_USD, BuyBitcloutComponent.BUY_WITH_BTC];
   activeTab = BuyBitcloutComponent.BUY_WITH_USD;
@@ -73,16 +73,16 @@ export class BuyBitcloutComponent implements OnInit {
 
   stepOneTooltip() {
     return (
-      "BitClout can be purchased in just a few minutes using Bitcoin through a completely decentralized process.\n\n" +
-      "To get started, simply send Bitcoin to your deposit address below. Note that deposits should show up " +
-      "within thirty seconds or so but sometimes, for various technical reasons, it can take up to an hour " +
-      "(though this should be extremely rare).\n\n" +
-      "Once you've deposited Bitcoin, you can swap it for BitClout in step two below. If it's your first " +
-      "time doing this, we recommend starting with a small test amount of Bitcoin to get comfortable with the flow.\n\n" +
-      "Note that the BitClout blockchain currently only supports conversion of Bitcoin into BitClout, not the other way " +
-      "around. This is a technical limitation due to the fact that the Bitcoin blockchain does not support " +
-      'the features required for a fully-decentralized "atomic swap" in the reverse direction. This being said, BitClout can be ' +
-      "sent to anybody instantly, and crypto exchanges can eventually list it for trading in the same way they list Bitcoin."
+      "$CLOUT можно приобрести всего за несколько минут с помощью Биткоин через полностью децентрализованный процесс.\n\n" +
+      "Чтобы начать, просто отправьте Bitcoin на указанный ниже депозитный адрес. Обратите внимание, что депозит должен появиться в интерфейсе " +
+      "в течение тридцати секунд или около того, но иногда, по различным техническим причинам, это может занять до часа " +
+      "(хотя это случается крайне редко).\n\n" +
+      "Как только вы внесли Биткоин, вы можете обменять его на $CLOUT на втором шаге ниже. Если это ваш первый " +
+      "раз, мы рекомендуем начать с небольшой тестовой суммы Биткоина, чтобы освоиться с интерфейсом.\n\n" +
+      "Обратите внимание, что блокчейн BitClout в настоящее время поддерживает только конвертацию Bitcoin в $CLOUT, а не наоборот " + 
+      "Это техническое ограничение, связанное с тем, что блокчейн Bitcoin не поддерживает " + 
+      "функции, необходимые для полностью децентрализованного атомарного обмена в обратном направлении. При этом $CLOUT может быть " + 
+      "отправлен любому человеку мгновенно, а криптовалютные биржи могут в конечном итоге включить его в список для торговли так же, как они включают в список Биткоин"
     );
   }
 
