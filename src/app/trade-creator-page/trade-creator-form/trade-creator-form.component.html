@@ -38,7 +38,7 @@
       <input
         class="form-control w-100 fs-15px text-left d-inline-block"
         [formControl]="creatorCoinTrade.transferRecipient"
-        placeholder="Enter a bitclout public key or recipient"
+        placeholder="Введите публичный ключ или имя получателя"
       />
     </div>
   </div>
@@ -49,7 +49,7 @@
     </div>
     <div *ngIf="creatorCoinTrade.showPubKeyError" class="mt-10px">Введите имя существующего пользователя или публичный клуб.</div>
     <div *ngIf="creatorCoinTrade.showCannotSendToSelfError" class="mt-10px">
-      Введите имя получателя, свое имя ввоить нельзя.
+      Введите имя получателя, свое имя вводить нельзя.
     </div>
   </div>
 </div>
