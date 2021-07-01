@@ -1,7 +1,7 @@
 <div *ngIf="!datasource.adapter.isLoading && datasource.adapter.itemsCount === 0" class="row no-gutters pt-10px">
   <div class="d-flex align-items-center" style="margin-bottom: 0">
-    No one owns ${{ profile.Username }} coin yet.&nbsp;
-    <a [routerLink]="['/' + globalVars.RouteNames.USER_PREFIX, profile.Username, 'buy']">Be the first!</a>
+    Еще никто не купил монеты ${{ profile.Username }}.&nbsp;
+    <a [routerLink]="['/' + globalVars.RouteNames.USER_PREFIX, profile.Username, 'buy']">Будь первым!</a>
   </div>
 </div>
 <simple-center-loader *ngIf="datasource.adapter.isLoading && loadingFirstPage"></simple-center-loader>
@@ -26,16 +26,16 @@
           >
             <div *ngIf="!row.HasPurchased" class="text-grey9" style="font-size: 10px">
               <i class="fas fa-exchange-alt pr-5px"></i>
-              Received
+              Получено
             </div>
             <div *ngIf="row.HasPurchased" class="text-grey9" style="font-size: 10px">
               <div *ngIf="row.HODLerPublicKeyBase58Check === profile.PublicKeyBase58Check && row.ProfileEntryResponse.IsReserved && !row.ProfileEntryResponse.IsVerified; else purchasedCoins">
                 <i class="far fa-clock fa-md pr-5px font-weight-bold"></i>
-                Reserved
+                Зарезервировано
               </div>
               <ng-template #purchasedCoins>
                 <i class="fas fa-check-square pr-5px"></i>
-                Purchased
+                Куплено
               </ng-template>
             </div>
           </div>
@@ -83,16 +83,16 @@
           >
             <div *ngIf="!row.HasPurchased" class="text-grey9" style="font-size: 10px">
               <i class="fas fa-exchange-alt pr-5px"></i>
-              Received
+              Получено
             </div>
             <div *ngIf="row.HasPurchased" class="text-grey9" style="font-size: 10px">
               <div *ngIf="row.HODLerPublicKeyBase58Check === profile.PublicKeyBase58Check && row.ProfileEntryResponse.IsReserved && !row.ProfileEntryResponse.IsVerified; else purchasedCoins">
                 <i class="far fa-clock fa-md pr-5px font-weight-bold"></i>
-                Reserved
+                Зарезервировано
               </div>
               <ng-template #purchasedCoins>
                 <i class="fas fa-check-square pr-5px"></i>
-                Purchased
+                Куплено
               </ng-template>
             </div>
           </div>

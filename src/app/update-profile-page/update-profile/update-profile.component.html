@@ -22,14 +22,14 @@
         "
         class="p-15px bg-warning"
       >
-        Creating a profile costs {{ globalVars.createProfileFeeInBitClout() }} BitClout ≈
+        Создание профиля стоит {{ globalVars.createProfileFeeInBitClout() }} BitClout ≈
         {{ globalVars.createProfileFeeInUsd() }} USD.
         <br />
-        This helps prevent spam.
+        Это помогает предотвратить спам
       </div>
       <!-- Form Inputs -->
       <div *ngIf="globalVars.loggedInUser" class="fs-18px px-15px global__mobile-scrollable-section">
-        <div class="mt-30px font-weight-bold">Username</div>
+        <div class="mt-30px font-weight-bold">Имя пользователя</div>
         <div class="mt-10px">
           <input [(ngModel)]="usernameInput" class="form-control fs-15px lh-18px p-10px" placeholder="Enter username" />
           <div
@@ -37,11 +37,11 @@
             [ngClass]="{ 'fc-red': profileUpdateErrors.usernameError }"
             class="fs-13px font-italic mt-5px"
           >
-            Please set a username
+            Пожалуйста утсановить имя пользователя
           </div>
         </div>
 
-        <div class="mt-30px font-weight-bold">Description</div>
+        <div class="mt-30px font-weight-bold">Описание</div>
 
         <div class="mt-10px">
           <textarea
@@ -56,11 +56,11 @@
             [ngClass]="{ 'fc-red': profileUpdateErrors.descriptionError }"
             class="fs-13px font-italic"
           >
-            Description can only be 180 characters
+            Описание должно быть не больше 180 знаков
           </div>
         </div>
 
-        <div class="mt-30px font-weight-bold">Avatar</div>
+        <div class="mt-30px font-weight-bold">Аватар</div>
         <div class="mt-5px">
           <div *ngIf="profilePicInput != null && profilePicInput.length > 0">
             <div [style.background-image]="'url(' + profilePicInput + ')'"></div>
@@ -90,7 +90,7 @@
                 padding: 0;
               "
             />
-            <button type="file" class="btn btn-outline-primary fs-15px lh-15px p-10px">Upload Image</button>
+            <button type="file" class="btn btn-outline-primary fs-15px lh-15px p-10px">Загрузить картинку</button>
           </div>
           <div>
             <div
@@ -98,11 +98,11 @@
               [ngClass]="{ 'fc-red': profileUpdateErrors.profilePicError }"
               class="fs-13px text-grey5 mt-5px"
             >
-              No image selected
+              Картинка не выбрана
             </div>
           </div>
 
-          <div class="mt-30px font-weight-bold">Founder Reward Percentage</div>
+          <div class="mt-30px font-weight-bold">Процент вознаграждения основателя</div>
 
           <div class="mt-10px">
             <div class="d-flex align-items-center justify-content-start h-100">
@@ -130,11 +130,11 @@
               [ngClass]="{ 'fc-red': profileUpdateErrors.founderRewardError }"
               class="fs-13px font-italic pt-5px"
             >
-              Please set a founder reward between 0-100.
+              Устновите процент вознаграждения основателя от 1 до 100.
             </div>
           </div>
 
-          <div class="mt-30px font-weight-bold">Public Key</div>
+          <div class="mt-30px font-weight-bold">Ваш публичный ключ</div>
 
           <div class="mt-10px d-flex align-items-center update-profile__pub-key fc-muted fs-110px">
             {{ globalVars.loggedInUser.PublicKeyBase58Check }}
