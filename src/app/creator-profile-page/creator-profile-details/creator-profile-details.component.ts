@@ -24,7 +24,7 @@ export class CreatorProfileDetailsComponent {
   };
   static TABS_LOOKUP = {
     Posts: "Посты",
-    "Creator Coin": "creator-coin",
+    Creator Coin: "creator-coin",
     Diamonds: "Алмазы",
   };
   appData: GlobalVarsService;
