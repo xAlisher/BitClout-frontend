@@ -28,7 +28,7 @@
   <simple-profile-card [profile]="payToCreator" [singleColumn]="true" *ngIf="payToCreator"></simple-profile-card>
 </div>
 
-<div class="fs-15px font-weight-bold mt-15px px-15px">Сколько $БитКлаутов послать:</div>
+<div class="fs-15px font-weight-bold mt-15px px-15px">$CLOUT послать:</div>
 <div class="d-flex align-items-center px-15px mt-5px">
   <input type="number" class="form-control w-100 fs-15px lh-15px" placeholder="0" [(ngModel)]="transferAmount" />
   <button
@@ -90,7 +90,7 @@
 </button>
 
 <div class="p-15px d-flex flex-column align-items-center">
-  <p>Share to receive $CLOUT</p>
+  <p>Поделитесь чтобы принимать $CLOUT</p>
   <img [src]="sendBitCloutQRCode | sanitizeQRCode"/>
 </div>
 
