@@ -100,7 +100,10 @@ export class BuyBitcloutComponent implements OnInit {
 
   withdrawBitcoinTooltip() {
     return (
-      "Если вы отправили слишком много Биткоина на свой депозитный адрес и вам нужно вернуть его обратно, вы можете получить доступ к Биткоину на этом адресе, импортировав свою начальную фразу BitClout в большинство стандартных Биткоин-кошельков, таких как Electrum, и выбрав m/44'/0'/0'/0/0 в качестве пути деривации. Это работает, потому что ваша начальная фраза BitClout используется для генерации адреса вашего депозита Биткоин".
+      "If you send too much Bitcoin to your deposit address and need to get it back, you " +
+      "can access the Bitcoin in this address by importing your BitClout seed phrase into most standard Bitcoin wallets " +
+      "like Electrum and choosing m/44'/0'/0'/0/0 as your derivation path. This works because your BitClout seed phrase is " +
+      "what's used to generate your Bitcoin deposit address."
     );
   }
 
@@ -113,7 +116,9 @@ export class BuyBitcloutComponent implements OnInit {
 
   bitcoinNetworkFeeTooltip() {
     return (
-      "The process of exchanging Bitcoin for BitClout requires posting a transaction to the Bitcoin blockchain. For this reason, we must add a network fee to incentivize miners to process the transaction."
+      "The process of exchanging Bitcoin for BitClout requires posting a transaction to " +
+      "the Bitcoin blockchain. For this reason, we must add a network fee to " +
+      "incentivize miners to process the transaction."
     );
   }
 
