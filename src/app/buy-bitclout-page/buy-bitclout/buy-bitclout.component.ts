@@ -100,25 +100,20 @@ export class BuyBitcloutComponent implements OnInit {
 
   withdrawBitcoinTooltip() {
     return (
-      "If you send too much Bitcoin to your deposit address and need to get it back, you " +
-      "can access the Bitcoin in this address by importing your BitClout seed phrase into most standard Bitcoin wallets " +
-      "like Electrum and choosing m/44'/0'/0'/0/0 as your derivation path. This works because your BitClout seed phrase is " +
-      "what's used to generate your Bitcoin deposit address."
+      "Если вы отправили слишком много Биткоина на свой депозитный адрес и вам нужно вернуть его обратно, вы можете получить доступ к Биткоину на этом адресе, импортировав свою начальную фразу BitClout в большинство стандартных Биткоин-кошельков, таких как Electrum, и выбрав m/44'/0'/0'/0/0 в качестве пути деривации. Это работает, потому что ваша начальная фраза BitClout используется для генерации адреса вашего депозита Биткоин".
     );
   }
 
   balanceUpdateTooltip() {
     return (
-      "Normally, when you send Bitcoin to the deposit address, it will show up instantly. " +
-      "However, it can take up to an hour in rare cases depending on where you send it from."
+      "Обычно, когда вы отправляете Биткоин на адрес депозита, он появляется мгновенно. " +
+      "Однако в редких случаях это может занять до часа в зависимости от того, откуда вы его отправляете."
     );
   }
 
   bitcoinNetworkFeeTooltip() {
     return (
-      "The process of exchanging Bitcoin for BitClout requires posting a transaction to " +
-      "the Bitcoin blockchain. For this reason, we must add a network fee to " +
-      "incentivize miners to process the transaction."
+      "Процесс обмена Биткоин на $CLOUT требует размещения транзакции в блокчейне Биткоин. По этой причине мы должны добавить комисию, чтобы стимулировать майнеров к обработке транзакции".
     );
   }
 
@@ -132,17 +127,17 @@ export class BuyBitcloutComponent implements OnInit {
       } else if (rawError.includes("not sufficient")) {
         return Messages.INSUFFICIENT_BALANCE;
       } else if (rawError.includes("so high")) {
-        return `The amount of Bitcoin you've deposited is too low. Please deposit at least ${(
+        return `Сумма внесенных вами Биткоинов слишком мала. Пожалуйста, внесите не менее ${(
           (this.buyBitCloutFields.bitcoinTransactionFeeRateSatoshisPerKB * 0.3) /
           1e8
         ).toFixed(4)} Bitcoin.`;
       } else if (rawError.includes("total=0")) {
-        return `You must purchase a non-zero amount of BitClout.`;
-      } else if (rawError.includes("You must burn at least .0001 Bitcoins")) {
-        return `You must exchange at least  ${(
+        return `Вы должны приобрести ненулевое количество $CLOUT.`;
+      } else if (rawError.includes("Вы должны сжечь не менее .0001 Биткоина")) {
+        return `Вы должны обменять как минимум  ${(
           (this.buyBitCloutFields.bitcoinTransactionFeeRateSatoshisPerKB * 0.3) /
           1e8
-        ).toFixed(4)} Bitcoin.`;
+        ).toFixed(4)} Биткоинов.`;
       } else {
         return rawError;
       }
@@ -167,9 +162,9 @@ export class BuyBitcloutComponent implements OnInit {
     if (this.appData == null || this.appData.loggedInUser == null || this.appData.latestBitcoinAPIResponse == null) {
       SwalHelper.fire({
         target: this.globalVars.getTargetComponentSelector(),
-        icon: "error",
-        title: `Oops...`,
-        html: `Please wait for at least one balance update before hitting this button.`,
+        icon: "ошибка",
+        title: `Опаньки...`,
+        html: `Пожалуйста, дождитесь хотя бы одного обновления баланса, прежде чем нажимать эту кнопку.`,
         showConfirmButton: true,
         showCancelButton: false,
         focusConfirm: true,
@@ -253,7 +248,7 @@ export class BuyBitcloutComponent implements OnInit {
 
     SwalHelper.fire({
       target: this.globalVars.getTargetComponentSelector(),
-      title: "Are you ready?",
+      title: "Готовы?",
       html: confirmBuyBitCloutString,
       showCancelButton: true,
       customClass: {
@@ -325,9 +320,7 @@ export class BuyBitcloutComponent implements OnInit {
     this.appData.logEvent("bitpop : buy : read-timeout");
     comp.waitingOnTxnConfirmation = false;
     let errString =
-      "Your BitClout purchase was successfully broadcast. Due to high load" +
-      " your balance may take up to half an hour to show up in your wallet. Please " +
-      " check back and hit the 'help' button if you have any problems.";
+      "Ваша покупка была произведена успешно. В связи с высокой нагрузкой, ваш баланс может обновляться около получаса. Пожалуйста, зайдите еще раз и нажмите кнопку Помошь, если у вас возникнут какие-либо проблемы.";
     comp.appData._alertSuccess(errString);
   }
 
@@ -378,9 +371,9 @@ export class BuyBitcloutComponent implements OnInit {
     if (!this.appData.satoshisPerBitCloutExchangeRate) {
       SwalHelper.fire({
         target: this.globalVars.getTargetComponentSelector(),
-        icon: "error",
-        title: `Oops...`,
-        html: `We're still fetching some exchange rate data. Try again in about ten seconds.`,
+        icon: "ошибка",
+        title: `Опаньки...`,
+        html: `Мы все еще получаем данные о курсах валют. Повторите попытку примерно через десять секунд`,
         showConfirmButton: true,
         showCancelButton: false,
         focusConfirm: true,
@@ -407,9 +400,9 @@ export class BuyBitcloutComponent implements OnInit {
     if (!this.appData.satoshisPerBitCloutExchangeRate) {
       SwalHelper.fire({
         target: this.globalVars.getTargetComponentSelector(),
-        icon: "error",
-        title: `Oops...`,
-        html: `We're still fetching some exchange rate data. Try again in about ten seconds.`,
+        icon: "ошибка",
+        title: `Опаньки...`,
+        html: `Мы все еще получаем данные о курсах валют. Повторите попытку примерно через десять секунд.`,
         showConfirmButton: true,
         showCancelButton: false,
         focusConfirm: true,
