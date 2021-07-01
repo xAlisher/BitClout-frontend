@@ -24,14 +24,14 @@
     <div class="background-color-grey p-35px br-12px d-flex flex-row align-items-center">
       <i class="far fa-clock fs-1 fc-muted"></i>
       <div class="ml-25px fc-default">
-        <p class="roboto-mono fs-18px mb-5px font-weight-semibold">This profile is reserved</p>
-        <p class="roboto-mono fs-15px">@{{ profile.Username }} has not joined Bitclout yet.</p>
+        <p class="roboto-mono fs-18px mb-5px font-weight-semibold">Этот профиль зарезервирован</p>
+        <p class="roboto-mono fs-15px">@{{ profile.Username }} еще не присоединился к RuСlout.</p>
       </div>
     </div>
     <div class="d-flex justify-content-center mt-30px">
       <div>
         <p class="font-weight-semibold roboto-mono mb-10px">
-          Are you @{{ profile.Username }} on Twitter? To claim this profile:
+          Если ты @{{ profile.Username }} на Твиттере, вы можете забрать этот профиль:
         </p>
         <ol>
           <li class="font-weight-semibold">
@@ -41,24 +41,22 @@
               [ngClass]="!isPubKeyBalanceless() ? 'fc-blue' : ''"
               (click)="globalVars.launchSignupFlow()"
             >
-              Create a brand new BitClout public key.
+              Создайте новый публичный ключ
             </p>
           </li>
           <li class="font-weight-semibold">
             <p class="roboto-mono mb-10px font-weight-semibold">
               <a *ngIf="isPubKeyBalanceless(); else pubKeyHasBalance" target="_blank" href="{{ tweetToClaimLink() }}">
-                Tweet your BitClout public key and tag #bitclout.
+                Сделайте твит с публичным ключом и поставьте хэштэг #bitclout.
               </a>
-              <ng-template #pubKeyHasBalance>Tweet your BitClout public key and add #bitclout.</ng-template>
+              <ng-template #pubKeyHasBalance>Сделайте твит с публичным ключом и поставьте хэштэг #bitclout.</ng-template>
               <span class="d-block fs-12px font-weight-normal">
-                Note: The public key you tweet will be swapped with the public key currently associated with this
-                profile. This will also swap all creator coin holdings. Please make sure that the public key you tweet
-                does not have any creator coins, if you do not want them to be lost.
+                Внимание: Публичный ключ этого профиля будет сменен на публичный ключ из твита. Это также изменит владельца авторских монет. Убедитесь что новый публичный ключ не держит авторских монет, при смене ключа они буду потеряны.
               </span>
             </p>
           </li>
           <li class="font-weight-semibold">
-            <p class="roboto-mono mb-10px font-weight-semibold">Your username will be transferred within 48 hours.</p>
+            <p class="roboto-mono mb-10px font-weight-semibold">Ваш профиль будет перенесен за 48 часов.</p>
           </li>
         </ol>
       </div>
@@ -74,9 +72,9 @@
     ></creator-profile-posts>
     <div *ngIf="globalVars.hasUserBlockedCreator(profile.PublicKeyBase58Check)" class="w-100 d-flex p-15px">
       <span>
-        You have blocked {{ profile.Username }}.
-        <a (click)="unblock()">Unblock</a>
-        to see their posts.
+        Вы заблокировали {{ profile.Username }}.
+        <a (click)="unblock()">Разблокируйте</a>
+        чтобы видеть посты.
       </span>
     </div>
   </div>
@@ -85,17 +83,17 @@
   <div class="w-100 d-flex flex-column" *ngIf="activeTab == 'Авторские монеты' && !loading">
     <div class="w-100 d-flex justify-content-start px-15px fs-15px">
       <div class="container border-bottom border-color-grey font-weight-bold fs-20px pl-0px py-15px">
-        Holders of ${{ profile.Username }} coin
+        Держатели ${{ profile.Username }} монет
       </div>
     </div>
 
     <div>
       <div class="container fs-15px flex-grow-1">
         <div class="row no-gutters border-bottom border-color-grey fc-muted">
-          <div class="col-6 d-flex py-15px mb-0">Username or PubKey</div>
-          <div class="col-3 py-15px mb-0">Coins Held</div>
+          <div class="col-6 d-flex py-15px mb-0">Имя или публичный ключ</div>
+          <div class="col-3 py-15px mb-0">Держит монет</div>
           <div class="col-3 py-15px mb-0">
-            Market Value
+            Рыночная цена
             <i
               class="fas fa-info-circle text-greyC fs-15px global__tooltip-icon"
               matTooltipClass="global__mat-tooltip global__mat-tooltip-font-size"
