@@ -16,14 +16,14 @@ export class CreatorProfileDetailsComponent {
   @ViewChild(CreatorProfileTopCardComponent, { static: false }) childTopCardComponent;
 
   static TABS = {
-    posts: "Posts",
+    Посты: "Посты",
     // Leaving this one in so old links will direct to the Coin Purchasers tab.
     "creator-coin": "Creator Coin",
     "coin-purchasers": "Creator Coin",
     diamonds: "Diamonds",
   };
   static TABS_LOOKUP = {
-    Posts: "posts",
+    Посты: "Посты",
     "Creator Coin": "creator-coin",
     Diamonds: "diamonds",
   };
@@ -53,7 +53,7 @@ export class CreatorProfileDetailsComponent {
       this.activeTab =
         params.tab && params.tab in CreatorProfileDetailsComponent.TABS
           ? CreatorProfileDetailsComponent.TABS[params.tab]
-          : "Posts";
+          : "Посты";
     });
   }
 
@@ -184,7 +184,7 @@ export class CreatorProfileDetailsComponent {
     this.activeTab = tabName;
     // Update query params to reflect current tab
     const urlTree = this.router.createUrlTree([], {
-      queryParams: { tab: CreatorProfileDetailsComponent.TABS_LOOKUP[tabName] || "posts" },
+      queryParams: { tab: CreatorProfileDetailsComponent.TABS_LOOKUP[tabName] || "Посты" },
       queryParamsHandling: "merge",
       preserveFragment: true,
     });
