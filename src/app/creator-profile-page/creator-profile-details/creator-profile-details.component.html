@@ -14,13 +14,13 @@
 
   <!-- Feed Selector -->
   <tab-selector
-    [tabs]="['Посты', 'Авторские монеты', 'Алмазы']"
+    [tabs]="['Posts', 'Creator coins', 'Diamonds']"
     [activeTab]="activeTab"
     (tabClick)="_handleTabClick($event)"
   ></tab-selector>
 
   <!-- Reserved -->
-  <div *ngIf="showProfileAsReserved() && activeTab === 'Посты'" class="p-15px">
+  <div *ngIf="showProfileAsReserved() && activeTab === 'Posts'" class="p-15px">
     <div class="background-color-grey p-35px br-12px d-flex flex-row align-items-center">
       <i class="far fa-clock fs-1 fc-muted"></i>
       <div class="ml-25px fc-default">
