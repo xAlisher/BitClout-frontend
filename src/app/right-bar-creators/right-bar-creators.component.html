@@ -24,7 +24,7 @@
         <div class="d-flex text-muted">
           <!-- Amount in USD-->
           <div class="ml-10px mr-10px">≈</div>
-          <div *ngIf="!globalVars.satoshisPerBitCloutExchangeRate">Fetching... USD</div>
+          <div *ngIf="!globalVars.satoshisPerBitCloutExchangeRate">Обновляется...</div>
           <div *ngIf="globalVars.satoshisPerBitCloutExchangeRate">
             {{ globalVars.nanosToUSD(globalVars.loggedInUser.BalanceNanos, 2) }} USD
           </div>
