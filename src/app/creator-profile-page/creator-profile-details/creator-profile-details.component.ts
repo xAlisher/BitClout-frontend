@@ -53,7 +53,7 @@ export class CreatorProfileDetailsComponent {
       this.activeTab =
         params.tab && params.tab in CreatorProfileDetailsComponent.TABS
           ? CreatorProfileDetailsComponent.TABS[params.tab]
-          : "Posts";
+          : "Посты";
     });
   }
 
