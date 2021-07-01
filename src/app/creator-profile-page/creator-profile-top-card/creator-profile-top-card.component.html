@@ -95,7 +95,7 @@
     <div style="whitespace: nowrap" class="d-flex">
       <div class="font-weight-bold" style="display: inline">
         ~{{ globalVars.nanosToUSD(profile.CoinPriceBitCloutNanos, 2) }}
-        <span class="fc-muted font-weight-normal">Coin Price</span>
+        <span class="fc-muted font-weight-normal">Цена монеты</span>
       </div>
     </div>
 
@@ -109,7 +109,7 @@
           queryParamsHandling="merge"
         >
           <span class="font-weight-bold">{{ followerCount }}&nbsp;</span>
-          <span class="fc-muted">Подписано на вас&nbsp;&nbsp;</span>
+          <span class="fc-muted">Подписано&nbsp;&nbsp;</span>
         </a>
 
         <a
@@ -119,7 +119,7 @@
           queryParamsHandling="merge"
         >
           <span class="font-weight-bold">{{ followingCount }}&nbsp;</span>
-          <span class="fc-muted">Вы подписаны&nbsp;&nbsp;</span>
+          <span class="fc-muted">Подписок&nbsp;&nbsp;</span>
         </a>
         <div class="d-lg-flex d-none">
           <span (click)="_copyPublicKey()" class="fs-15px cursor-pointer creator-profile__ellipsis-restriction">
@@ -142,7 +142,7 @@
         </span>
         <div class="px-5px">
           <span class="font-weight-bold">&nbsp;{{ getFoundersRewardPercent() | number: "0.0-9" }}%</span>
-          FR
+          ВО
         </div>
       </div>
 
