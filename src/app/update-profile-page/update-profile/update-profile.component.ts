@@ -78,14 +78,9 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
 
   founderRewardTooltip() {
     return (
-      "When someone purchases your coin, a percentage of each coin purchase " +
-      "gets allocated to you as a founder reward.\n\n" +
-      "A value of 0% means that no new coins get allocated to you when someone buys, " +
-      "whereas a value of 100% means that nobody other than you can ever get coins because 100% of " +
-      "every purchase will just go to you.\n\n" +
-      "Setting this value too high will deter buyers from ever " +
-      "purchasing your coin. It's a balance, so be careful or just stick " +
-      "with the default."
+      "Когда кто-то покупает ваши монеты, процент от каждой покупки монет поступает к вам в качестве вознаграждения основателя.\n\n" +
+      "Значение 0% означает, что вам не выделяются новые монеты, когда кто-то покупает, тогда как значение 100% означает, что никто, кроме вас, никогда не сможет получить монеты, потому что 100% от каждой покупки будут доставаться только вам.\n\n" +
+      "Если установить слишком высокое значение, это отпугнет покупателей от приобретения вашей монеты. Это баланс, поэтому будьте осторожны или просто придерживайтесь значения по умолчанию."
     );
   }
 
