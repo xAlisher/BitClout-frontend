@@ -63,13 +63,13 @@ export class MessagesFilterMenuComponent implements OnInit {
 
   sortAlgorithmToText() {
     if (this.messageSortAlgorithm === "time") {
-      return "Most recent";
+      return "По времени";
     } else if (this.messageSortAlgorithm === "followers") {
-      return "Most followed";
+      return "По подпискам";
     } else if (this.messageSortAlgorithm === "holders") {
-      return "Largest Holders";
+      return "Держатели вашей монеты";
     } else {
-      return "Most clout";
+      return "По цене монеты";
     }
   }
 }
