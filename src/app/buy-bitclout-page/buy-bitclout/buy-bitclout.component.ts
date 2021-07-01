@@ -82,43 +82,38 @@ export class BuyBitcloutComponent implements OnInit {
       "Обратите внимание, что блокчейн BitClout в настоящее время поддерживает только конвертацию Bitcoin в $CLOUT, а не наоборот " + 
       "Это техническое ограничение, связанное с тем, что блокчейн Bitcoin не поддерживает " + 
       "функции, необходимые для полностью децентрализованного атомарного обмена в обратном направлении. При этом $CLOUT может быть " + 
-      "отправлен любому человеку мгновенно, а криптовалютные биржи могут в конечном итоге включить его в список для торговли так же, как они включают в список Биткойн"
+      "отправлен любому человеку мгновенно, а криптовалютные биржи могут в конечном итоге включить его в список для торговли так же, как они включают в список Биткоин"
     );
   }
 
   depositBitcoinTooltip() {
-    return "Send Bitcoin to this address so that you can swap it for BitClout in step two below.";
+    return "Отправьте Биткоин на этот адрес, чтобы вы могли обменять его на $CLOUT на втором шаге ниже.";
   }
 
   minDepositTooltip() {
     return (
-      "This is the minimum amount required to cover the Bitcoin " +
-      "network fees associated with your purchase. We would love to make this " +
-      "lower, but if we did then the Bitcoin network would reject your transaction."
+      "Это минимальная сумма, необходимая для покрытия комиссии " +
+      "Биткоина, связанной с вашей покупкой. Мы хотели бы сделать комиссию " +
+      "ниже, но если бы мы это сделали, то сеть Биткоин отклонила бы вашу транзакцию."
     );
   }
 
   withdrawBitcoinTooltip() {
     return (
-      "If you send too much Bitcoin to your deposit address and need to get it back, you " +
-      "can access the Bitcoin in this address by importing your BitClout seed phrase into most standard Bitcoin wallets " +
-      "like Electrum and choosing m/44'/0'/0'/0/0 as your derivation path. This works because your BitClout seed phrase is " +
-      "what's used to generate your Bitcoin deposit address."
+      "Если вы отправили слишком много Биткоина на свой депозитный адрес и вам нужно вернуть его обратно, вы можете получить доступ к Биткоину на этом адресе, импортировав свою начальную фразу BitClout в большинство стандартных Биткоин-кошельков, таких как Electrum, и выбрав m/44'/0'/0'/0/0 в качестве пути деривации. Это работает, потому что ваша начальная фраза BitClout используется для генерации адреса вашего депозита Биткоин".
     );
   }
 
   balanceUpdateTooltip() {
     return (
-      "Normally, when you send Bitcoin to the deposit address, it will show up instantly. " +
-      "However, it can take up to an hour in rare cases depending on where you send it from."
+      "Обычно, когда вы отправляете Биткоин на адрес депозита, он появляется мгновенно. " +
+      "Однако в редких случаях это может занять до часа в зависимости от того, откуда вы его отправляете."
     );
   }
 
   bitcoinNetworkFeeTooltip() {
     return (
-      "The process of exchanging Bitcoin for BitClout requires posting a transaction to " +
-      "the Bitcoin blockchain. For this reason, we must add a network fee to " +
-      "incentivize miners to process the transaction."
+      "The process of exchanging Bitcoin for BitClout requires posting a transaction to the Bitcoin blockchain. For this reason, we must add a network fee to incentivize miners to process the transaction."
     );
   }
 
