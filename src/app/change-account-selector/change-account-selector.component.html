@@ -17,7 +17,7 @@
       *ngIf="!globalVars.loggedInUser"
       class="font-italic change-account-selector__ellipsis-restriction cursor-pointer"
     >
-      Logged out
+      Вы вышли из БитКлаут
     </div>
     <i class="fas fa-angle-down text-grey5 change-account-selector__down-arrow"></i>
   </div>
@@ -43,14 +43,14 @@
       (click)="globalVars.launchLoginFlow()"
       class="pl-10px pr-10px pt-10px font-weight-bold change-account-selector__hover"
     >
-      Add account
+      Добавить аккаунт
     </div>
     <div
       *ngIf="globalVars.loggedInUser"
       class="pl-10px pr-10px pt-10px font-weight-bold change-account-selector__hover"
       (click)="launchLogoutFlow()"
     >
-      Logout
+      Выйти
     </div>
   </div>
 </div>
