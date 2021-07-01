@@ -16,16 +16,16 @@ export class CreatorProfileDetailsComponent {
   @ViewChild(CreatorProfileTopCardComponent, { static: false }) childTopCardComponent;
 
   static TABS = {
-    posts: "Посты",
+    posts: "Posts",
     // Leaving this one in so old links will direct to the Coin Purchasers tab.
     "creator-coin": "Creator Coin",
     "coin-purchasers": "Creator Coin",
-    diamonds: "Алмазы",
+    diamonds: "Diamonds",
   };
   static TABS_LOOKUP = {
-    Posts: "Посты",
-    Creator Coin: "creator-coin",
-    Diamonds: "Алмазы",
+    Posts: "posts",
+    "Creator Coin": "creator-coin",
+    Diamonds: "diamonds",
   };
   appData: GlobalVarsService;
   userName: string;
@@ -53,7 +53,7 @@ export class CreatorProfileDetailsComponent {
       this.activeTab =
         params.tab && params.tab in CreatorProfileDetailsComponent.TABS
           ? CreatorProfileDetailsComponent.TABS[params.tab]
-          : "Посты";
+          : "Posts";
     });
   }
 
