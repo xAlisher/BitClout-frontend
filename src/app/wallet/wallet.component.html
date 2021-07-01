@@ -19,7 +19,7 @@
         <div
           class="d-flex align-items-center justify-content-between fs-18px font-weight-bold p-15px holdings__divider border-bottom border-color-grey"
         >
-          <div>$БитКлаут</div>
+          <div>$СLOUT</div>
           <div class="fs-15px" style="margin-top: 2px">
             <a
               *ngIf="globalVars.loggedInUser"
@@ -72,13 +72,13 @@
         <div
           class="d-flex align-items-center justify-content-between fs-18px p-15px holdings__divider border-bottom border-color-grey"
         >
-          <div class="font-weight-bold">Авторские монеты<span style="font-size:13px;">({{ this.globalVars.loggedInUser.UsersYouHODL.length }} Held)</span>
+          <div class="font-weight-bold">Авторские монеты<span style="font-size:13px;">({{ this.globalVars.loggedInUser.UsersYouHODL.length }} всего)</span>
           </div>
           <div class="fs-14px">
             <span class="font-weight-bold">≈ {{ globalVars.nanosToUSD(totalValue(), 2) }}</span>
             Стоимость в USD<br>
             <span class="font-weight-bold" style="font-size:13px;">≈ {{ globalVars.nanosToBitClout(totalValue(), 4) }}</span>
-            $БитКлаут
+            $CLOUT
           </div>
         </div>
 
