@@ -42,7 +42,7 @@ export class PostThreadComponent {
   }
 
   ngOnInit() {
-    this.titleService.setTitle(this.currentPost.ProfileEntryResponse.Username + " on BitClout");
+    this.titleService.setTitle(this.currentPost.ProfileEntryResponse.Username + " на RuClout");
   }
 
   _rerenderThread() {
@@ -230,7 +230,7 @@ export class PostThreadComponent {
     parentPost.CommentCount += 1;
 
     // Show toast when adding comment to parent post
-    this.toastr.info("Your post was sent!", null, { positionClass: "toast-top-center", timeOut: 3000 });
+    this.toastr.info("Ответ отправлен", null, { positionClass: "toast-top-center", timeOut: 3000 });
   }
 
   prependToCommentList(parentPost, postEntryResponse) {

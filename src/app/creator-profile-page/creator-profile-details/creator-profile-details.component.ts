@@ -58,7 +58,7 @@ export class CreatorProfileDetailsComponent {
   }
 
   ngOnInit() {
-    this.titleService.setTitle(this.userName + " on BitClout");
+    this.titleService.setTitle(this.userName + " на RuClout");
   }
 
   userBlocked() {
