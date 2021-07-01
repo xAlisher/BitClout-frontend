@@ -28,7 +28,7 @@ export class RightBarCreatorsComponent implements OnInit {
 
   static GAINERS: RightBarTabOption = {
     name: "Топовый прирост",
-    width: 175,
+    width: 275,
     poweredBy: { name: "BitClout Pulse", link: "https://bitcloutpulse.com" },
   };
   static DIAMONDS: RightBarTabOption = {
@@ -38,13 +38,13 @@ export class RightBarCreatorsComponent implements OnInit {
   };
   static COMMUNITY: RightBarTabOption = {
     name: "Лучшие народные проекты",
-    width: 225,
+    width: 275,
     poweredBy: { name: "BitHunt", link: "https://bithunt.com" },
   };
 
   static ALL_TIME: RightBarTabOption = {
     name: "Лучшие авторы за все время",
-    width: 210,
+    width: 275,
     poweredBy: null,
   };
 
