@@ -5,12 +5,12 @@
   <top-bar-mobile-hamburger-menu class="mr-15px d-lg-none"></top-bar-mobile-hamburger-menu>
 
   <i class="far fa-check-circle text-primary"></i>
-  &nbsp;Buy Complete
+  &nbsp;Покупка завершена
 </div>
 
 <div class="fs-15px px-15px pt-25px pb-30px">
   <div class="font-weight-bold fs-24px mb-15px">
-    New balance:
+    Новый баланс:
     {{ globalVars.nanosToBitClout(globalVars.loggedInUser.BalanceNanos, 9) }} $CLOUT
   </div>
 
@@ -19,24 +19,24 @@
     [routerLink]="'/' + globalVars.RouteNames.CREATORS"
     queryParamsHandling="merge"
   >
-    Buy creator coins »
+    Купить авторских монет »
   </a>
 
   <div class="text-grey7 mt-15px">
-    Use $CLOUT to buy creator coins. Collect your favorite creators and get on their team!
+    Используйте $CLOUT чтобы купить авторские монеты. Соберите своих любимых авторов и войдите в их команду!
   </div>
 </div>
 
 <div class="w-100 border-top border-color-grey text-grey5 mt-10px">
   <div class="fs-15px buy-bitclout__box-label-adjustment pl-5px pr-5px ml-10px" style="background-color: white">
-    Next
+    Дальше
   </div>
 </div>
 
 <div class="ml-15px">
   <div class="mt-10px">
     <a class="link--unstyled text-grey5" [routerLink]="'/' + globalVars.RouteNames.WALLET" queryParamsHandling="merge">
-      View your wallet »
+      Посмотреть кошелек »
     </a>
   </div>
 
@@ -46,7 +46,7 @@
       [routerLink]="'/' + globalVars.RouteNames.UPDATE_PROFILE"
       queryParamsHandling="merge"
     >
-      Update your profile »
+      Обновить профиль »
     </a>
   </div>
 
@@ -57,7 +57,7 @@
       (click)="triggerBuyMoreBitclout()"
       queryParamsHandling="merge"
     >
-      Buy more $CLOUT »
+      Купить больше $CLOUT »
     </a>
   </div>
 </div>
