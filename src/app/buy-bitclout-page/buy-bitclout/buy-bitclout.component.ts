@@ -87,14 +87,14 @@ export class BuyBitcloutComponent implements OnInit {
   }
 
   depositBitcoinTooltip() {
-    return "Send Bitcoin to this address so that you can swap it for BitClout in step two below.";
+    return "Отправьте Биткоин на этот адрес, чтобы вы могли обменять его на $CLOUT на втором шаге ниже.";
   }
 
   minDepositTooltip() {
     return (
-      "This is the minimum amount required to cover the Bitcoin " +
-      "network fees associated with your purchase. We would love to make this " +
-      "lower, but if we did then the Bitcoin network would reject your transaction."
+      "Это минимальная сумма, необходимая для покрытия комиссии " +
+      "Биткоина, связанной с вашей покупкой. Мы хотели бы сделать комиссию " +
+      "ниже, но если бы мы это сделали, то сеть Биткоин отклонила бы вашу транзакцию."
     );
   }
 
