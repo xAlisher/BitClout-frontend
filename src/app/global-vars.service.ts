@@ -478,8 +478,8 @@ export class GlobalVarsService {
     // calculate (and subtract) whole minutes
     const minutes = Math.ceil(delta / 60) % 60;
 
-    return `${days ? days + "d " : ""} ${!days && hours ? hours + "h" : ""} ${
-      !days && !hours && minutes ? minutes + "m" : ""
+    return `${days ? days + "дней" : ""} ${!days && hours ? hours + "часов" : ""} ${
+      !days && !hours && minutes ? minutes + "мин" : ""
     }`;
   }
 
