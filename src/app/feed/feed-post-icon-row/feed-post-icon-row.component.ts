@@ -438,10 +438,10 @@ export class FeedPostIconRowComponent {
       SwalHelper.fire({
         target: this.globalVars.getTargetComponentSelector(),
         icon: "info",
-        title: `Sending ${this.diamondSelected} diamonds to ${this.postContent.ProfileEntryResponse?.Username}`,
-        html: `Clicking confirm will send ${this.globalVars.getUSDForDiamond(
+        title: `Посылаем ${this.diamondSelected} алмазы ${this.postContent.ProfileEntryResponse?.Username}`,
+        html: `Нажатие "Пожтвердить" отошлет ${this.globalVars.getUSDForDiamond(
           this.diamondSelected
-        )} worth of your creator coin to @${this.postContent.ProfileEntryResponse?.Username}`,
+        )} стоимости вашей монеты к @${this.postContent.ProfileEntryResponse?.Username}`,
         showCancelButton: true,
         showConfirmButton: true,
         focusConfirm: true,
@@ -449,8 +449,8 @@ export class FeedPostIconRowComponent {
           confirmButton: "btn btn-light",
           cancelButton: "btn btn-light no",
         },
-        confirmButtonText: "Confirm",
-        cancelButtonText: "Cancel",
+        confirmButtonText: "Подтвердить",
+        cancelButtonText: "Отменить",
         reverseButtons: true,
       }).then(async (res: any) => {
         if (res.isConfirmed) {
