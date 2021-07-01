@@ -2,7 +2,7 @@ import { Theme } from "./symbols";
 
 export const legendsTheme: Theme = {
   key: "legends",
-  name: "Legends Theme",
+  name: "Легендарная тема",
   properties: {
     "--background": "#1c1812",
     "--text": "#EFF3F8",

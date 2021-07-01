@@ -2,7 +2,7 @@ import { Theme } from "./symbols";
 
 export const lightTheme: Theme = {
   key: "light",
-  name: "Light Theme",
+  name: "Светлая тема",
   properties: {
     "--background": "#fff",
     "--text": "#333333",
