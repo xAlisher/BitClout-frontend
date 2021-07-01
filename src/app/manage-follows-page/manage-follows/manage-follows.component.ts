@@ -13,8 +13,8 @@ import { Datasource, IAdapter, IDatasource } from "ngx-ui-scroll";
   styleUrls: ["./manage-follows.component.scss"],
 })
 export class ManageFollowsComponent implements OnDestroy {
-  static FOLLOWING = "Подписаны на вас";
-  static FOLLOWERS = "Ваши подписки";
+  static FOLLOWING = "Ваши подписки";
+  static FOLLOWERS = "Подписаны на вас";
   static PAGE_SIZE = 50;
 
   ManageFollowsComponent = ManageFollowsComponent;
