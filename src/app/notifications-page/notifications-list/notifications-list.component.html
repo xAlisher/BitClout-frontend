@@ -2,14 +2,14 @@
 <div class="global__top-bar d-flex align-items-center fs-18px font-weight-bold pl-15px border-bottom border-color-grey">
   <top-bar-mobile-navigation-control class="mr-15px d-lg-none d-inline-block"></top-bar-mobile-navigation-control>
 
-  Уведомления
+  Notifications
 </div>
 <div class="global__top-bar__height"></div>
 <div *ngIf="isLoading">
   <simple-center-loader></simple-center-loader>
 </div>
 <div *ngIf="(!totalItems || totalItems === 0) && !isLoading" class="d-flex justify-content-center mt-30px">
-  <span>У вас нет уведомлений</span>
+  <span>You don't have any notifications</span>
 </div>
 
 <div #uiScroll *uiScroll="let item of datasource; let index = index" class="border-bottom border-color-grey">
