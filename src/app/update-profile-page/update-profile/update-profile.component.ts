@@ -56,7 +56,7 @@ export class UpdateProfileComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this._updateFormBasedOnLoggedInUser();
-    this.titleService.setTitle("Update Profile - BitClout");
+    this.titleService.setTitle("Обновить профиль - RuClout");
   }
 
   // This is used to handle any changes to the loggedInUser elegantly.

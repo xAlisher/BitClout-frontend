@@ -169,7 +169,7 @@ export class AdminComponent implements OnInit {
     this._loadBuyBitCloutFeeRate();
     this._loadUSDToBitCloutReserveExchangeRate();
 
-    this.titleService.setTitle("Admin - BitClout");
+    this.titleService.setTitle("Admin - RuClout");
   }
 
   _updateNodeInfo() {

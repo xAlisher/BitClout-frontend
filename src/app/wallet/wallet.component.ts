@@ -43,7 +43,7 @@ export class WalletComponent implements OnInit {
     });
     this.sortHodlings(this.usersYouPurchased);
     this.sortHodlings(this.usersYouReceived);
-    this.titleService.setTitle("Wallet - BitClout");
+    this.titleService.setTitle("Кошелёк - RuClout");
   }
 
   sortHodlings(hodlings: BalanceEntryResponse[]): void {

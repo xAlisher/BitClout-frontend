@@ -143,7 +143,7 @@ export class CreatorsLeaderboardComponent implements OnInit {
 
   ngOnInit() {
     this.isLoadingProfilesForFirstTime = true;
-    this.titleService.setTitle("Buy Creator Coins - BitClout");
+    this.titleService.setTitle("Купить авторские монеты - RuClout");
   }
 
   canLoggedInUserFollowTargetPublicKey(targetPubKeyBase58Check) {

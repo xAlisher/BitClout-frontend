@@ -56,7 +56,7 @@ export class TransferBitcloutComponent implements OnInit {
 
   ngOnInit() {
     this.feeRateBitCloutPerKB = (this.globalVars.defaultFeeRateNanosPerKB / 1e9).toFixed(9);
-    this.titleService.setTitle("Send $CLOUT - BitClout");
+    this.titleService.setTitle("Послать $CLOUT - RuClout");
     this.sendBitCloutQRCode = `${this.backendApi._makeRequestURL(
       location.host,
       "/" + RouteNames.SEND_BITCLOUT
