@@ -259,8 +259,8 @@ export class FeedPostComponent implements OnInit {
   blockUser() {
     SwalHelper.fire({
       target: this.globalVars.getTargetComponentSelector(),
-      title: "Block user?",
-      html: `This will hide all comments from this user on your posts as well as hide them from your view on your feed and other threads.`,
+      title: "Заблокировать?",
+      html: `Это позволит скрыть все комментарии этого пользователя к вашим сообщениям, а также скрыть их из вашего поля зрения в ленте и других местах.`,
       showCancelButton: true,
       customClass: {
         confirmButton: "btn btn-light",
