@@ -3,7 +3,7 @@ import { BackendApiService, ProfileEntryResponse } from "../../app/backend-api.s
 import { FormControl, Validators } from "@angular/forms";
 
 export class CreatorCoinTrade {
-  static BUY_VERB = "Ккпить";
+  static BUY_VERB = "Купить";
   static SELL_VERB = "Продать";
   static TRANSFER_VERB = "Переслать";
 
