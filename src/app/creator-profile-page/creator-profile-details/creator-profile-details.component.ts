@@ -20,7 +20,7 @@ export class CreatorProfileDetailsComponent {
     // Leaving this one in so old links will direct to the Coin Purchasers tab.
     "creator-coin": "Creator Coin",
     "coin-purchasers": "Creator Coin",
-    diamonds: "Diamonds",
+    diamonds: "Алмазы",
   };
   static TABS_LOOKUP = {
     Posts: "posts",
