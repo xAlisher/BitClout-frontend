@@ -40,6 +40,7 @@ import { LeftBarButtonComponent } from "./left-bar/left-bar-button/left-bar-butt
 import { TradeCreatorPageComponent } from "./trade-creator-page/trade-creator-page.component";
 import { TradeCreatorComponent } from "./trade-creator-page/trade-creator/trade-creator.component";
 import { BuyBitcloutComponent } from "./buy-bitclout-page/buy-bitclout/buy-bitclout.component";
+import { BuyBitcloutUSDComponent } from "./buy-bitclout-page/buy-bitclout-usd/buy-bitclout-usd.component";
 import { TradeCreatorFormComponent } from "./trade-creator-page/trade-creator-form/trade-creator-form.component";
 import { TradeCreatorPreviewComponent } from "./trade-creator-page/trade-creator-preview/trade-creator-preview.component";
 import { TradeCreatorCompleteComponent } from "./trade-creator-page/trade-creator-complete/trade-creator-complete.component";
@@ -76,9 +77,10 @@ import { TosPageComponent } from "./tos-page/tos-page.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { AdminPageComponent } from "./admin-page/admin-page.component";
 import { AdminComponent } from "./admin/admin.component";
+import { AdminWyreComponent } from "./admin/admin-wyre/admin-wyre.component";
 import { NetworkInfoComponent } from "./network-info/network-info.component";
 import { SanitizeAndAutoLinkPipe } from "../lib/pipes/sanitize-and-auto-link-pipe";
-import { SanitizeVideoEmbedPipe } from "../lib/pipes/sanitize-video-embed-pipe";
+import { SanitizeEmbedPipe } from "../lib/pipes/sanitize-embed-pipe";
 import { NgxIntlTelInputModule } from "ngx-intl-tel-input";
 import { SettingsComponent } from "./settings/settings.component";
 import { NotificationsListComponent } from "./notifications-page/notifications-list/notifications-list.component";
@@ -101,14 +103,33 @@ import { Toast, ToastrModule } from "ngx-toastr";
 import { SignUpComponent } from "./sign-up/sign-up.component";
 import { WalletActionsDropdownComponent } from "./wallet/wallet-actions-dropdown/wallet-actions-dropdown.component";
 import { PickACoinPageComponent } from "./pick-a-coin-page/pick-a-coin-page.component";
+import { DiamondsModalComponent } from "./diamonds-modal/diamonds-modal.component";
+import { RecloutsModalComponent } from "./reclouts-modal/reclouts-modal.component";
+import { QuoteRecloutsModalComponent } from "./quote-reclouts-modal/quote-reclouts-modal.component";
+import { LikesModalComponent } from "./likes-modal/likes-modal.component";
+import { SimpleProfileCardComponent } from "./simple-profile-card/simple-profile-card.component";
 import { CreatorDiamondsComponent } from "./creator-profile-page/creator-diamonds/creator-diamonds.component";
 import { DiamondPostsPageComponent } from "./diamond-posts-page/diamond-posts-page.component";
 import { DiamondPostsComponent } from "./diamond-posts-page/diamond-posts/diamond-posts.component";
 import { MessagesFilterMenuComponent } from "./messages-page/messages-inbox/messages-filter-menu/messages-filter-menu.component";
+import { CountdownTimerComponent } from "./countdown-timer/countdown-timer.component";
+import { AvatarDirective } from "./avatar/avatar.directive";
+import { TrendsPageComponent } from "./trends-page/trends-page.component";
+import { TrendsComponent } from "./trends-page/trends/trends.component";
+import { UploadDirective } from "./directives/upload.directive";
+import { SanitizeQRCodePipe } from "../lib/pipes/sanitize-qrcode-pipe";
+
+// Modular Themes for BitClout by Carsen Klock @carsenk
+import { ThemeModule } from "./theme/theme.module";
+import { lightTheme } from "./theme/light-theme";
+import { darkTheme } from "./theme/dark-theme";
+import { icydarkTheme } from "./theme/icy-dark-theme";
+import { legendsTheme } from "./theme/legends-theme";
 
 @NgModule({
   declarations: [
     AppComponent,
+    UploadDirective,
     TermsOfServiceComponent,
     ManageFollowsComponent,
     ManageFollowsPageComponent,
@@ -138,6 +159,7 @@ import { MessagesFilterMenuComponent } from "./messages-page/messages-inbox/mess
     TradeCreatorPageComponent,
     TradeCreatorComponent,
     BuyBitcloutComponent,
+    BuyBitcloutUSDComponent,
     TradeCreatorFormComponent,
     TradeCreatorPreviewComponent,
     TradeCreatorCompleteComponent,
@@ -173,9 +195,10 @@ import { MessagesFilterMenuComponent } from "./messages-page/messages-inbox/mess
     TosPageComponent,
     AdminPageComponent,
     AdminComponent,
+    AdminWyreComponent,
     NetworkInfoComponent,
     SanitizeAndAutoLinkPipe,
-    SanitizeVideoEmbedPipe,
+    SanitizeEmbedPipe,
     SettingsComponent,
     NotificationsListComponent,
     PageComponent,
@@ -189,9 +212,19 @@ import { MessagesFilterMenuComponent } from "./messages-page/messages-inbox/mess
     WalletActionsDropdownComponent,
     PickACoinPageComponent,
     CreatorDiamondsComponent,
+    DiamondsModalComponent,
+    RecloutsModalComponent,
+    QuoteRecloutsModalComponent,
+    LikesModalComponent,
+    SimpleProfileCardComponent,
     MessagesFilterMenuComponent,
     DiamondPostsPageComponent,
     DiamondPostsComponent,
+    CountdownTimerComponent,
+    AvatarDirective,
+    TrendsPageComponent,
+    TrendsComponent,
+    SanitizeQRCodePipe,
   ],
   imports: [
     BrowserModule,
@@ -212,6 +245,12 @@ import { MessagesFilterMenuComponent } from "./messages-page/messages-inbox/mess
     PopoverModule.forRoot(),
     RatingModule.forRoot(),
     CollapseModule.forRoot(),
+    ThemeModule.forRoot({
+      themes: [lightTheme, darkTheme, icydarkTheme, legendsTheme],
+      active:
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"),
+    }),
   ],
   providers: [BackendApiService, GlobalVarsService, BsModalService, IdentityService],
   bootstrap: [AppComponent],

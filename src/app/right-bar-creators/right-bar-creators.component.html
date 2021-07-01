@@ -9,13 +9,13 @@
     <div class="d-flex justify-content-between">
       <div>Цена $БитКлаута</div>
       <div>
-        ~{{ globalVars.bitcloutToUSDExchangeRateToDisplay }}
-        <span class="text-muted">USD за монету</span>
+        <span>~{{ globalVars.bitcloutToUSDExchangeRateToDisplay }}</span>
+        <span class="text-muted">&nbsp;USD за монету</span>
       </div>
     </div>
     <div *ngIf="globalVars.loggedInUser" class="d-flex justify-content-between pt-10px">
       <div class="d-flex" style="min-width: 150px">$БитКлауты в кошельке</div>
-      <div class="d-flex align-items-center justify-content-end flex-wrap">
+      <div class="d-flex flex-column justify-content-end flex-wrap" style="align-items: flex-end">
         <div>
           <!-- Amount in BitClout-->
           {{ globalVars.nanosToBitClout(globalVars.loggedInUser.BalanceNanos) }}
@@ -24,10 +24,12 @@
         <div class="d-flex text-muted">
           <!-- Amount in USD-->
           <div class="ml-10px mr-10px">≈</div>
-          <div *ngIf="!globalVars.satoshisPerBitCloutExchangeRate">Fetching... USD</div>
           <div *ngIf="globalVars.satoshisPerBitCloutExchangeRate">
-            {{ globalVars.nanosToUSD(globalVars.loggedInUser.BalanceNanos, 2) }} USD
+            <span>
+              {{ globalVars.nanosToUSD(globalVars.loggedInUser.BalanceNanos, 2) }} USD
+            </span>
           </div>
+          <div *ngIf="!globalVars.satoshisPerBitCloutExchangeRate">Fetching... USD</div>
         </div>
       </div>
     </div>
@@ -39,7 +41,10 @@
   </div>
 
   <!-- Title -->
-  <div class="fs-15px text-grey5 font-weight-bold mb-10px d-flex flex-column">
+  <div
+    class="fs-15px text-grey5 font-weight-bold mb-10px d-flex flex-column"
+    [ngClass]="{ 'pb-10px': !activeRightTabOption.poweredBy }"
+  >
     <div>
       <select
         #rightBarSelect
@@ -50,16 +55,15 @@
         [(ngModel)]="activeTab"
       >
         <option
-          *ngFor="let option of chartMap | keyvalue"
+          *ngFor="let option of RightBarCreatorsComponent.chartMap | keyvalue"
           [value]="option.key"
-          style="background-color: none"
           class="fs-15px text-grey5 font-weight-bold"
         >
           {{ option.key }}
         </option>
       </select>
     </div>
-    <div class="pt-5px">
+    <div class="pt-5px" *ngIf="activeRightTabOption.poweredBy">
       <a class="link--unstyled fs-12px text-grey7" [href]="activeRightTabOption.poweredBy.link" target="_blank">
         <i class="fas fa-external-link-alt pr-5px"></i>
         Powered by {{ activeRightTabOption.poweredBy.name }}

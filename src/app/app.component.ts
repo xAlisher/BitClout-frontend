@@ -90,23 +90,6 @@ export class AppComponent implements OnInit {
     const userCopy = JSON.parse(JSON.stringify(user));
   }
 
-  _numMessagesToRead(messageResponse: any) {
-    if (!this.globalVars.loggedInUser || !messageResponse || !messageResponse.OrderedContactsWithMessages) {
-      return;
-    }
-    let totalMessages = 0;
-    let totalRead = 0;
-    for (const contact of messageResponse.OrderedContactsWithMessages) {
-      totalMessages += contact.Messages.length;
-      const numRead = this.globalVars.messageMeta.notificationMap[
-        this.globalVars.loggedInUser.PublicKeyBase58Check + contact.PublicKeyBase58Check
-      ];
-      totalRead += numRead ? numRead : 0;
-    }
-    const numNotifications = totalMessages - totalRead;
-    return numNotifications > 0 ? numNotifications : "";
-  }
-
   _updateTopLevelData() {
     if (this.callingUpdateTopLevelData) {
       return;
@@ -145,15 +128,15 @@ export class AppComponent implements OnInit {
           this.globalVars.setLoggedInUser(loggedInUser);
         }
 
+        // Setup messages for the logged in user
+        this.globalVars.SetupMessages();
+
         // Convert the lists of coin balance entries into maps.
         // TODD: I've intermittently seen errors here where UsersYouHODL is null.
         // That's why I added this || [] thing. We should figure
         // out the root cause.
         for (const entry of this.globalVars.loggedInUser?.UsersYouHODL || []) {
           this.globalVars.youHodlMap[entry.CreatorPublicKeyBase58Check] = entry;
-        }
-        for (const entry of this.globalVars.loggedInUser?.UsersWhoHODLYou || []) {
-          this.globalVars.hodlYouMap[entry.HODLerPublicKeyBase58Check] = entry;
         }
 
         this.globalVars.defaultFeeRateNanosPerKB = res.DefaultFeeRateNanosPerKB;
@@ -172,54 +155,8 @@ export class AppComponent implements OnInit {
     return observable;
   }
 
-  _updateBitCloutDisplayExchangeRate() {
-    // Don't show a value until we've fetched the protocol's exchange rate.
-    if (!this.globalVars.satoshisPerBitCloutExchangeRate) {
-      return;
-    }
-
-    // The exchange rate requires getting the current Bitcoin price in USD.
-    this.httpClient.get<any>("https://blockchain.info/ticker").subscribe(
-      (res: any) => {
-        if (res.USD != null && res.USD.last != null) {
-          this.globalVars.usdPerBitcoinExchangeRate = res.USD.last;
-          // nonaperunit / satoshiperunit / usdperbitcoin * satoshiperbitcoin
-          const nanosPerUnit = 1e9;
-          const satoshisPerBitcoin = 1e8;
-          this.globalVars.nanosPerUSDExchangeRate =
-            (nanosPerUnit /
-              this.globalVars.satoshisPerBitCloutExchangeRate /
-              this.globalVars.usdPerBitcoinExchangeRate) *
-            satoshisPerBitcoin;
-          this.bitcloutToUSDExchangeRateToDisplay = this.globalVars.nanosToUSD(1e9, null);
-          // TODO: When we get rid of the old app, we will only use the globalVars version of this.
-          this.globalVars.bitcloutToUSDExchangeRateToDisplay = this.globalVars.nanosToUSD(1e9, 2);
-
-          this.ref.detectChanges();
-        }
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
   _updateBitCloutExchangeRate() {
-    this.backendApi.GetExchangeRate(this.globalVars.localNode).subscribe(
-      (res: any) => {
-        // TODO: Delete these fields. They're no longer used.
-        this.globalVars.satoshisPerBitCloutExchangeRate = res.SatoshisPerBitCloutExchangeRate;
-
-        this.globalVars.NanosSold = res.NanosSold;
-        this.globalVars.ProtocolUSDCentsPerBitcoinExchangeRate = res.USDCentsPerBitcoinExchangeRate;
-
-        // The exchange rate requires getting the current Bitcoin price in USD.
-        this._updateBitCloutDisplayExchangeRate();
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+    this.globalVars._updateBitCloutExchangeRate();
   }
 
   _updateAppState() {
@@ -229,7 +166,7 @@ export class AppComponent implements OnInit {
         this.globalVars.minSatoshisBurnedForProfileCreation = res.MinSatoshisBurnedForProfileCreation;
         this.globalVars.diamondLevelMap = res.DiamondLevelMap;
         this.globalVars.showProcessingSpinners = res.ShowProcessingSpinners;
-
+        this.globalVars.showBuyWithUSD = res.HasWyreIntegration;
         // Setup amplitude on first run
         if (!this.globalVars.amplitude && res.AmplitudeKey) {
           this.globalVars.amplitude = require("amplitude-js");
@@ -252,27 +189,6 @@ export class AppComponent implements OnInit {
       });
   }
 
-  repeatForXInterval: number;
-  _repeatForX(
-    funcToRepeat: () => void,
-    timeoutMillis,
-    numTries = 10,
-    triesExceededCallback: (comp: any) => void,
-    comp: any = ""
-  ) {
-    let attempts = 0;
-
-    // Set an interval to repeat
-    this.repeatForXInterval = setInterval(() => {
-      if (attempts >= numTries) {
-        triesExceededCallback(comp);
-        clearInterval(this.repeatForXInterval);
-      }
-      funcToRepeat();
-      attempts++;
-    }, timeoutMillis) as any;
-  }
-
   _updateEverything = (
     waitTxn: string = "",
     successCallback: (comp: any) => void = () => {},
@@ -291,9 +207,18 @@ export class AppComponent implements OnInit {
     // If we have a transaction to wait for, we do a GetTxn call for a maximum of 10s (250ms * 40).
     // There is a success and error callback so that the caller gets feedback on the polling.
     if (waitTxn !== "") {
-      this._repeatForX(
-        () => {
-          return this.backendApi.GetTxn(this.globalVars.localNode, waitTxn).subscribe(
+      let attempts = 0;
+      let numTries = 160;
+      let timeoutMillis = 750;
+      // Set an interval to repeat
+      let interval = setInterval(() => {
+        if (attempts >= numTries) {
+          errorCallback(comp);
+          clearInterval(interval);
+        }
+        this.backendApi
+          .GetTxn(this.globalVars.localNode, waitTxn)
+          .subscribe(
             (res: any) => {
               if (!res.TxnFound) {
                 return;
@@ -303,20 +228,16 @@ export class AppComponent implements OnInit {
               this._updateBitCloutExchangeRate();
               this._updateAppState();
 
-              clearInterval(this.repeatForXInterval);
+              clearInterval(interval);
               successCallback(comp);
             },
             (error) => {
-              clearInterval(this.repeatForXInterval);
+              clearInterval(interval);
               errorCallback(comp);
             }
-          );
-        },
-        750,
-        160,
-        errorCallback,
-        comp
-      );
+          )
+          .add(() => attempts++);
+      }, timeoutMillis) as any;
     } else {
       if (this.globalVars.pausePolling) {
         return;

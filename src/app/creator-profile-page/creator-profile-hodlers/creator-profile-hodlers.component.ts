@@ -81,6 +81,7 @@ export class CreatorProfileHodlersComponent {
         minIndex: 0,
         padding: 0.5,
         windowViewport: true,
+        infinite: true,
       },
     });
   }
@@ -132,6 +133,13 @@ export class CreatorProfileHodlersComponent {
   }
 
   getTooltipForRow(row: BalanceEntryResponse): string {
+    if (
+      row.HODLerPublicKeyBase58Check === this.profile.PublicKeyBase58Check &&
+      row.ProfileEntryResponse.IsReserved &&
+      !row.ProfileEntryResponse.IsVerified
+    ) {
+      return `These creator coins are reserved for ${this.profile.Username}`;
+    }
     return row.HasPurchased
       ? `This user has purchased some amount of $${this.profile.Username} coin.`
       : `This user has not purchased $${this.profile.Username} coin.

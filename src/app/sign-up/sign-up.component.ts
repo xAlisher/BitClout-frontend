@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { GlobalVarsService } from "../global-vars.service";
 import { BackendApiService, User } from "../backend-api.service";
 import { CountryISO, PhoneNumberFormat } from "ngx-intl-tel-input";
+import { FeedComponent } from "../feed/feed.component";
 
 @Component({
   selector: "sign-up",
@@ -88,6 +89,7 @@ export class SignUpComponent {
   }
 
   _skipButtonClickedOnStarterBitCloutStep() {
+    this.globalVars.logEvent("account : create : create-phone-number-verification : skip");
     this._nextPage();
   }
 
@@ -112,5 +114,21 @@ export class SignUpComponent {
         this.storingEmailAndPhone = false;
         this._nextPage();
       });
+  }
+
+  buyBitCloutClicked(): void {
+    this.globalVars.logEvent("account : create : buy-bitclout");
+    this.router.navigate(["/" + this.globalVars.RouteNames.BUY_BITCLOUT], {
+      queryParams: { stepNum: null },
+      queryParamsHandling: "merge",
+    });
+  }
+
+  buyBitCloutSkipped(): void {
+    this.globalVars.logEvent("account : create : buy-bitclout");
+    this.router.navigate(["/" + this.globalVars.RouteNames.BROWSE], {
+      queryParams: { stepNum: null, feedTab: FeedComponent.GLOBAL_TAB },
+      queryParamsHandling: "merge",
+    });
   }
 }
