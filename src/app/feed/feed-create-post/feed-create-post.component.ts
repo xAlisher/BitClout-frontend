@@ -113,7 +113,7 @@ export class FeedCreatePostComponent implements OnInit {
       return this.randomMovieQuote;
     }
     // Creating comment or quote reclout;
-    return this.isQuote ? "Add a quote" : "Post your reply";
+    return this.isQuote ? "Добавить цитату" : "Введите ответ";
   }
 
   _setRandomMovieQuote() {
