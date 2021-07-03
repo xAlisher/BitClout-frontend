@@ -47,7 +47,7 @@
     <div *ngIf="creatorCoinTrade.showUsernameError" class="mt-10px">
       Пользователь "{{ creatorCoinTrade.transferRecipient.value }}" не найден.
     </div>
-    <div *ngIf="creatorCoinTrade.showPubKeyError" class="mt-10px">Введите имя существующего пользователя или публичный клуб.</div>
+    <div *ngIf="creatorCoinTrade.showPubKeyError" class="mt-10px">Введите имя существующего пользователя или публичный ключ.</div>
     <div *ngIf="creatorCoinTrade.showCannotSendToSelfError" class="mt-10px">
       Введите имя получателя, свое имя вводить нельзя.
     </div>
@@ -110,7 +110,7 @@
         *ngIf="creatorCoinTrade.amount.invalid && (creatorCoinTrade.amount.dirty || creatorCoinTrade.amount.touched)"
         class="text-danger text-left fs-14px mt-2"
       >
-        <div *ngIf="creatorCoinTrade.amount.errors.required" class="mt-10px">Amount is required</div>
+        <div *ngIf="creatorCoinTrade.amount.errors.required" class="mt-10px">Необходимо ввести количество</div>
 
         <div *ngIf="creatorCoinTrade.amount.errors.exclusiveMin" class="mt-10px">
           Количество должно быть больше чем {{ this._minAmount() | number: "0.0-9" }}
@@ -153,7 +153,7 @@
       [ngClass]="{ disabled: !_allowPreviewClick() }"
       (click)="_onPreviewClicked()"
     >
-      Обзор
+      Проверить
     </a>
   </div>
 </div>
