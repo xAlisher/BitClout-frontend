@@ -585,7 +585,7 @@ export class GlobalVarsService {
     SwalHelper.fire({
       target: this.getTargetComponentSelector(),
       icon: "error",
-      title: `Oops...`,
+      title: `Опаньки...`,
       html: err,
       showConfirmButton: true,
       showCancelButton: showBuyBitClout,

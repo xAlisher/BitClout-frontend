@@ -166,7 +166,7 @@ export class BuyBitcloutComponent implements OnInit {
       SwalHelper.fire({
         target: this.globalVars.getTargetComponentSelector(),
         icon: "error",
-        title: `Oops...`,
+        title: `Опаньки...`,
         html: `Please wait for at least one balance update before hitting this button.`,
         showConfirmButton: true,
         showCancelButton: false,
@@ -377,7 +377,7 @@ export class BuyBitcloutComponent implements OnInit {
       SwalHelper.fire({
         target: this.globalVars.getTargetComponentSelector(),
         icon: "error",
-        title: `Oops...`,
+        title: `Опаньки...`,
         html: `We're still fetching some exchange rate data. Try again in about ten seconds.`,
         showConfirmButton: true,
         showCancelButton: false,
@@ -406,7 +406,7 @@ export class BuyBitcloutComponent implements OnInit {
       SwalHelper.fire({
         target: this.globalVars.getTargetComponentSelector(),
         icon: "error",
-        title: `Oops...`,
+        title: `Опаньки...`,
         html: `We're still fetching some exchange rate data. Try again in about ten seconds.`,
         showConfirmButton: true,
         showCancelButton: false,
