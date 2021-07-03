@@ -116,9 +116,7 @@ export class BuyBitcloutComponent implements OnInit {
 
   bitcoinNetworkFeeTooltip() {
     return (
-      "The process of exchanging Bitcoin for BitClout requires posting a transaction to " +
-      "the Bitcoin blockchain. For this reason, we must add a network fee to " +
-      "incentivize miners to process the transaction."
+      "Процесс обмена Биткоин на $CLOUT требует публикации транзакции в блокчейне Биткоин. По этой причине мы должны добавить комиссию. Это стимулирует майнеров к обработке транзакции."
     );
   }
 
