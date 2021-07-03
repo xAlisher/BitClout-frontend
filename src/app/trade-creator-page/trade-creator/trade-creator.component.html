@@ -37,9 +37,8 @@
       
         </p>
 
-        <span *ngIf="screenToShow == this.TRADE_CREATOR_PREVIEW_SCREEN">
-          Подтвердить монету
-          {{ creatorCoinTrade.tradeVerbString() }}
+        <span *ngIf="screenToShow == this.TRADE_CREATOR_PREVIEW_SCREEN"> 
+          {{ creatorCoinTrade.tradeVerbString() }} монеты?
         </span>
 
         <span *ngIf="screenToShow == this.TRADE_CREATOR_COMPLETE_SCREEN">
