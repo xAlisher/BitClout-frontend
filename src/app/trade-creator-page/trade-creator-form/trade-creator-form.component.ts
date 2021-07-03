@@ -432,10 +432,8 @@ export class TradeCreatorFormComponent implements OnInit, OnDestroy {
         const hodlersCount = this.globalVars.loggedInUser.UsersWhoHODLYouCount;
         SwalHelper.fire({
           target: this.globalVars.getTargetComponentSelector(),
-          title: "Warning!",
-          html: `You have ${hodlersCount} supporter${hodlersCount > 1 ? "s" : ""}  who own${
-            hodlersCount > 1 ? "" : "s"
-          } your coin. If you sell, they will be notified. Are you sure?`,
+          title: "Внимание!",
+          html: `У вас ${hodlersCount} держателей монеты. Если вы продадите монету, они будут уведомлены. Хотите продолжить?`,
           showCancelButton: true,
           showDenyButton: true,
           showConfirmButton: false,
