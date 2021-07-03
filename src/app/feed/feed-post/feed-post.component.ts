@@ -206,8 +206,8 @@ export class FeedPostComponent implements OnInit {
   hidePost() {
     SwalHelper.fire({
       target: this.globalVars.getTargetComponentSelector(),
-      title: "Hide post?",
-      html: `This can’t be undone. The post will be removed from your profile, from search results, and from the feeds of anyone who follows you.`,
+      title: "Скрыть пост?",
+      html: `Это нельзя отменить. Пост будет удален из вашего профиля, из результатов поиска и из ленты всех, кто подписан на вас.`,
       showCancelButton: true,
       customClass: {
         confirmButton: "btn btn-light",
