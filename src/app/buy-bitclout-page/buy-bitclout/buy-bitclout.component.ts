@@ -130,17 +130,17 @@ export class BuyBitcloutComponent implements OnInit {
       } else if (rawError.includes("not sufficient")) {
         return Messages.INSUFFICIENT_BALANCE;
       } else if (rawError.includes("so high")) {
-        return `The amount of Bitcoin you've deposited is too low. Please deposit at least ${(
+        return `Сумма внесенных вами биткойнов слишком мала. Пожалуйста, внесите не менее ${(
           (this.buyBitCloutFields.bitcoinTransactionFeeRateSatoshisPerKB * 0.3) /
           1e8
-        ).toFixed(4)} Bitcoin.`;
+        ).toFixed(4)} Биткоин.`;
       } else if (rawError.includes("total=0")) {
-        return `You must purchase a non-zero amount of BitClout.`;
+        return `Вы должны приобрести ненулевое количество BitClout.`;
       } else if (rawError.includes("You must burn at least .0001 Bitcoins")) {
-        return `You must exchange at least  ${(
+        return `YВы должны обменять как минимум  ${(
           (this.buyBitCloutFields.bitcoinTransactionFeeRateSatoshisPerKB * 0.3) /
           1e8
-        ).toFixed(4)} Bitcoin.`;
+        ).toFixed(4)} Биткоин.`;
       } else {
         return rawError;
       }
