@@ -71,25 +71,25 @@ export class WalletComponent implements OnInit {
 
   unminedBitCloutToolTip() {
     return (
-      "Mining in progress. Feel free to transact in the meantime.\n\n" +
-      "Mined balance:\n" +
+      "Происходит майнинг. Но вы можете делать транзакции.\n\n" +
+      "Намайнено:\n" +
       this.globalVars.nanosToBitClout(this.globalVars.loggedInUser.BalanceNanos, 9) +
-      " BitClout.\n\n" +
-      "Unmined balance:\n" +
+      " $CLOUT.\n\n" +
+      "Ненамайнено:\n" +
       this.globalVars.nanosToBitClout(this.globalVars.loggedInUser.UnminedBalanceNanos, 9) +
-      " BitClout."
+      " $CLOUT."
     );
   }
 
   unminedCreatorCoinToolTip(creator: any) {
     return (
-      "Mining in progress. Feel free to transact in the meantime.\n\n" +
-      "Net unmined transactions:\n" +
+      "Происходит майнинг. Но вы можете делать транзакции.\n\n" +
+      "Баланс без ненамайненных транзакций:\n" +
       this.globalVars.nanosToBitClout(creator.NetBalanceInMempool, 9) +
-      " BitClout.\n\n" +
-      "Balance w/unmined transactions:\n" +
+      " $CLOUT.\n\n" +
+      "Баланс с ненамайненными транзакциями:\n" +
       this.globalVars.nanosToBitClout(creator.BalanceNanos, 9) +
-      " BitClout.\n\n"
+      " $CLOUT.\n\n"
     );
   }
 

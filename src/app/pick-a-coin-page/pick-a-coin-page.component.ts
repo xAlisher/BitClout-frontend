@@ -22,7 +22,7 @@ export class PickACoinPageComponent implements OnInit {
         this.hasUnminedCreatorCoins = true;
       }
     }
-    this.titleService.setTitle("Послать аторские монеты - RuClout");
+    this.titleService.setTitle("Отправить аторские монеты - RuClout");
   }
 
   usersYouHODL() {
